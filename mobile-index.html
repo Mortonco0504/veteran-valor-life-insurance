@@ -6,12 +6,21 @@
     <title>Veteran Valor Life Insurance - Mobile</title>
     <script>
         // Desktop detection and redirect
-        function isDesktop() {
-            return !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth > 768;
+        function isDesktopDevice() {
+            // Check for desktop user agents (not mobile)
+            const mobileUserAgents = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+            
+            // Check for desktop-specific features
+            const hasMouse = 'onmousemove' in window;
+            const hasLargeScreen = window.innerWidth > 768;
+            const hasNoTouchScreen = !('ontouchstart' in window) && navigator.maxTouchPoints === 0;
+            
+            // Return true if desktop indicators are present
+            return !mobileUserAgents.test(navigator.userAgent) && hasLargeScreen && (hasMouse || hasNoTouchScreen);
         }
         
         // Redirect to desktop version if on desktop device
-        if (isDesktop() && window.location.href.includes('mobile-index.html')) {
+        if (isDesktopDevice() && window.location.href.includes('mobile-index.html')) {
             window.location.href = 'index.html';
         }
     </script>
@@ -31,14 +40,8 @@
                         <span class="mobile-logo-subtitle">Life Insurance</span>
                     </div>
                 </div>
-                <div class="mobile-header-actions">
-                    <a href="index.html" class="mobile-desktop-link">
-                        <i class="fas fa-desktop"></i>
-                        Desktop
-                    </a>
-                    <div class="mobile-nav-toggle">
-                        <i class="fas fa-bars"></i>
-                    </div>
+                <div class="mobile-nav-toggle">
+                    <i class="fas fa-bars"></i>
                 </div>
             </div>
         <nav class="mobile-nav">
