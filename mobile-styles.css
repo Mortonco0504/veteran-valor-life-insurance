@@ -50,7 +50,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 20px;
+    padding: 10px 20px;
 }
 
 
@@ -62,7 +62,7 @@ body {
 }
 
 .mobile-logo img {
-    height: 35px;
+    height: 30px;
     width: auto;
 }
 
@@ -128,11 +128,10 @@ body {
 .mobile-hero {
     background: var(--gradient-primary);
     color: var(--white);
-    padding: 80px 0 60px;
+    padding: 40px 0 30px;
     text-align: center;
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
+    min-height: auto;
+    display: block;
 }
 
 .mobile-hero-content {
@@ -150,10 +149,10 @@ body {
     align-items: center;
     gap: 8px;
     background: rgba(255, 255, 255, 0.1);
-    padding: 10px 16px;
+    padding: 8px 14px;
     border-radius: 25px;
-    margin-bottom: 20px;
-    font-size: 13px;
+    margin-bottom: 15px;
+    font-size: 12px;
     font-weight: 500;
 }
 
@@ -163,33 +162,33 @@ body {
 }
 
 .mobile-hero-title {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     color: var(--accent-color) !important;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     line-height: 1.2;
 }
 
 .mobile-hero-subtitle {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--white) !important;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     line-height: 1.1;
 }
 
 .mobile-hero-description {
-    font-size: 16px;
+    font-size: 15px;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 25px;
-    line-height: 1.4;
+    margin-bottom: 18px;
+    line-height: 1.3;
 }
 
 .mobile-hero-cta {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .mobile-btn {
@@ -210,9 +209,9 @@ body {
 }
 
 .mobile-btn-large {
-    padding: 18px 35px;
-    font-size: 17px;
-    min-height: 55px;
+    padding: 16px 30px;
+    font-size: 16px;
+    min-height: 50px;
 }
 
 .mobile-btn-primary {
@@ -245,7 +244,7 @@ body {
 }
 
 .mobile-cta-note {
-    font-size: 13px;
+    font-size: 12px;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 400;
 }
@@ -1067,7 +1066,7 @@ body {
 
 /* Ensure proper spacing for fixed header */
 body {
-    padding-top: 70px;
+    padding-top: 60px;
 }
 
 /* Smooth scrolling */
