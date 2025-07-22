@@ -37,20 +37,34 @@ body {
 
 /* Mobile Header */
 .mobile-header {
-    background: var(--white);
-    box-shadow: var(--shadow-light);
+    background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    border-bottom: 1px solid rgba(30, 64, 175, 0.1);
+    animation: headerSlideDown 0.5s ease-out;
+}
+
+@keyframes headerSlideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .mobile-header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 12px 20px;
+    position: relative;
 }
 
 
@@ -58,12 +72,21 @@ body {
 .mobile-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    padding: 4px 8px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-logo:hover {
+    background-color: rgba(30, 64, 175, 0.05);
+    transform: scale(1.02);
 }
 
 .mobile-logo img {
-    height: 30px;
+    height: 32px;
     width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .mobile-logo-text {
@@ -72,30 +95,43 @@ body {
 }
 
 .mobile-logo-title {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 700;
     color: var(--primary-color);
+    letter-spacing: -0.5px;
 }
 
 .mobile-logo-subtitle {
-    font-size: 12px;
+    font-size: 11px;
     color: var(--medium-gray);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .mobile-nav-toggle {
-    background: none;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e3a8a 100%);
     border: none;
-    font-size: 24px;
-    color: var(--primary-color);
+    font-size: 20px;
+    color: var(--white);
     cursor: pointer;
-    padding: 8px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
 }
 
 .mobile-nav {
     display: none;
-    background: var(--white);
-    border-top: 1px solid var(--light-gray);
+    background: linear-gradient(135deg, var(--white) 0%, #f8fafc 100%);
+    border-top: 1px solid rgba(30, 64, 175, 0.1);
     padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-nav.active {
@@ -113,15 +149,35 @@ body {
 
 .mobile-nav a {
     display: block;
-    padding: 20px;
+    padding: 18px 20px;
     text-decoration: none;
     color: var(--dark-gray);
-    font-weight: 500;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(30, 64, 175, 0.05);
+    position: relative;
 }
 
 .mobile-nav a:hover {
-    background-color: var(--light-gray);
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.05) 0%, rgba(30, 64, 175, 0.1) 100%);
+    color: var(--primary-color);
+    padding-left: 25px;
+}
+
+.mobile-nav a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--primary-color);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.mobile-nav a:hover::before {
+    transform: scaleY(1);
 }
 
 /* Mobile Hero Section */
