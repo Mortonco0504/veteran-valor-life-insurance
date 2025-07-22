@@ -50,7 +50,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
+    padding: 12px 20px;
 }
 
 
@@ -62,7 +62,7 @@ body {
 }
 
 .mobile-logo img {
-    height: 40px;
+    height: 35px;
     width: auto;
 }
 
@@ -128,9 +128,9 @@ body {
 .mobile-hero {
     background: var(--gradient-primary);
     color: var(--white);
-    padding: 120px 0 80px;
+    padding: 80px 0 60px;
     text-align: center;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     align-items: center;
 }
@@ -150,10 +150,10 @@ body {
     align-items: center;
     gap: 8px;
     background: rgba(255, 255, 255, 0.1);
-    padding: 12px 20px;
+    padding: 10px 16px;
     border-radius: 25px;
-    margin-bottom: 30px;
-    font-size: 14px;
+    margin-bottom: 20px;
+    font-size: 13px;
     font-weight: 500;
 }
 
@@ -163,33 +163,33 @@ body {
 }
 
 .mobile-hero-title {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--accent-color) !important;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     line-height: 1.2;
 }
 
 .mobile-hero-subtitle {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 700;
     color: var(--white) !important;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     line-height: 1.1;
 }
 
 .mobile-hero-description {
-    font-size: 18px;
+    font-size: 16px;
     color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 40px;
-    line-height: 1.5;
+    margin-bottom: 25px;
+    line-height: 1.4;
 }
 
 .mobile-hero-cta {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .mobile-btn {
@@ -210,9 +210,9 @@ body {
 }
 
 .mobile-btn-large {
-    padding: 20px 40px;
-    font-size: 18px;
-    min-height: 60px;
+    padding: 18px 35px;
+    font-size: 17px;
+    min-height: 55px;
 }
 
 .mobile-btn-primary {
@@ -245,7 +245,7 @@ body {
 }
 
 .mobile-cta-note {
-    font-size: 14px;
+    font-size: 13px;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 400;
 }
@@ -1067,7 +1067,7 @@ body {
 
 /* Ensure proper spacing for fixed header */
 body {
-    padding-top: 80px;
+    padding-top: 70px;
 }
 
 /* Smooth scrolling */
