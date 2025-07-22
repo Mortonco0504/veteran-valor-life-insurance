@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veteran Valor Life Insurance - Mobile</title>
+    <meta name="description" content="Get affordable life insurance for veterans and their families. Compare rates and find the best coverage options.">
+    <link rel="stylesheet" href="mobile-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="mobile-header-content">
+            <div class="mobile-logo">
+                <img src="logo.png" alt="Veteran Valor Life Insurance">
+                <div class="mobile-logo-text">
+                    <span class="mobile-logo-title">Veteran Valor</span>
+                    <span class="mobile-logo-subtitle">Life Insurance</span>
+                </div>
+            </div>
+            <div class="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#comparison-section">Compare</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#" id="mobile-contact-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Mobile Hero Section -->
+    <section class="mobile-hero" id="home">
+        <div class="mobile-hero-content">
+            <div class="mobile-hero-text">
+                <div class="mobile-trust-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Trusted by 50,000+ Veterans</span>
+                </div>
+                <h1 class="mobile-hero-title">Veterans & Active Service Members</h1>
+                <h2 class="mobile-hero-subtitle">You May Qualify for New Life Insurance Benefits in 2025</h2>
+                <p class="mobile-hero-description">As a resident of your state, you are entitled to check your eligibility for exclusive life insurance benefits designed specifically for our nation's heroes.</p>
+                <div class="mobile-hero-cta">
+                    <a href="#quote" class="mobile-btn mobile-btn-large mobile-btn-patriotic">
+                        See If I Qualify
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <p class="mobile-cta-note">
+                        <i class="fas fa-shield-alt"></i>
+                        Your information is secure and protected
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Benefits Section -->
+    <section class="mobile-benefits-section">
+        <div class="mobile-container">
+            <h2>Why Choose Veteran Valor Life Insurance?</h2>
+            <div class="mobile-benefits-grid">
+                <div class="mobile-benefit-card">
+                    <div class="mobile-benefit-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Veteran-Focused</h3>
+                    <p>Rates and policies specifically designed for veterans and their families, with special consideration for military service.</p>
+                </div>
+                <div class="mobile-benefit-card">
+                    <div class="mobile-benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Affordable Rates</h3>
+                    <p>Competitive rates starting from just $15/month with coverage up to $2 million for qualified applicants.</p>
+                </div>
+                <div class="mobile-benefit-card">
+                    <div class="mobile-benefit-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>No Medical Exam</h3>
+                    <p>Many policies available without medical exams, making it easier to get the coverage you need quickly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Quote Section -->
+    <section class="mobile-quote-section" id="quote">
+        <div class="mobile-container">
+            <div class="mobile-quote-form-container">
+                <h2>Get Your Free Quote</h2>
+                <p class="mobile-form-subtitle">Compare rates from top insurance companies in minutes</p>
+                <form class="mobile-quote-form" id="mobile-quote-form">
+                    <div class="mobile-form-row">
+                        <div class="mobile-form-group">
+                            <label for="mobile-firstName">First Name</label>
+                            <input type="text" id="mobile-firstName" name="firstName" required autocomplete="given-name">
+                        </div>
+                        <div class="mobile-form-group">
+                            <label for="mobile-lastName">Last Name</label>
+                            <input type="text" id="mobile-lastName" name="lastName" required autocomplete="family-name">
+                        </div>
+                    </div>
+                    <div class="mobile-form-row">
+                        <div class="mobile-form-group">
+                            <label for="mobile-phone">Phone Number</label>
+                            <input type="tel" id="mobile-phone" name="phone" required autocomplete="tel">
+                        </div>
+                        <div class="mobile-form-group">
+                            <label for="mobile-email">Email Address</label>
+                            <input type="email" id="mobile-email" name="email" required autocomplete="email">
+                        </div>
+                    </div>
+                    <div class="mobile-form-row">
+                        <div class="mobile-form-group">
+                            <label for="mobile-birthDate">Date of Birth</label>
+                            <input type="date" id="mobile-birthDate" name="birthDate" required autocomplete="bday">
+                        </div>
+                        <div class="mobile-form-group">
+                            <label for="mobile-coverage">Coverage Amount</label>
+                            <select id="mobile-coverage" name="coverage" required>
+                                <option value="">Select Coverage</option>
+                                <option value="$10,000">$10,000</option>
+                                <option value="$25,000">$25,000</option>
+                                <option value="$50,000">$50,000</option>
+                                <option value="$100,000">$100,000</option>
+                                <option value="$250,000">$250,000</option>
+                                <option value="$500,000">$500,000</option>
+                                <option value="$1,000,000">$1,000,000</option>
+                                <option value="$2,000,000">$2,000,000</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mobile-form-group">
+                        <label for="mobile-policyType">Policy Type</label>
+                        <select id="mobile-policyType" name="policyType" required>
+                            <option value="">Select Policy Type</option>
+                            <option value="Term Life">Term Life - $30/month</option>
+                            <option value="Whole Life">Whole Life - $50/month</option>
+                            <option value="Universal Life">Universal Life - $100/month</option>
+                        </select>
+                    </div>
+                    <div class="mobile-checkbox-group">
+                        <label class="mobile-checkbox-label">
+                            <input type="checkbox" required>
+                            <span>I agree to receive quotes and information about life insurance</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="mobile-btn mobile-btn-primary mobile-btn-large">
+                        <i class="fas fa-shield-alt"></i>
+                        Get My Free Quote
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile FAQ Section -->
+    <section class="mobile-faq-section" id="faq">
+        <div class="mobile-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="mobile-faq-list">
+                <div class="mobile-faq-item">
+                    <div class="mobile-faq-question">
+                        <h3>Do I need a medical exam to get life insurance?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="mobile-faq-answer">
+                        <p><strong>No medical exam required for most policies!</strong> We offer several no-exam life insurance options specifically designed for veterans:</p>
+                        <ul>
+                            <li><strong>Simplified Issue:</strong> No medical exam, just health questions</li>
+                            <li><strong>Guaranteed Issue:</strong> No medical exam or health questions</li>
+                            <li><strong>Accelerated Underwriting:</strong> Quick approval using existing medical records</li>
+                        </ul>
+                        <p>While policies with medical exams often offer lower rates, our no-exam options provide immediate coverage starting at $30/month for term life and $50/month for whole life.</p>
+                    </div>
+                </div>
+                
+                <div class="mobile-faq-item">
+                    <div class="mobile-faq-question">
+                        <h3>How much life insurance coverage do I need?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="mobile-faq-answer">
+                        <p><strong>Coverage amounts typically range from $10,000 to $2,000,000.</strong> Here's how to calculate your needs:</p>
+                        <ul>
+                            <li><strong>Income Replacement:</strong> 10-12 times your annual income</li>
+                            <li><strong>Debt Coverage:</strong> Mortgage, car loans, credit cards</li>
+                            <li><strong>Education Costs:</strong> College tuition for children</li>
+                            <li><strong>Final Expenses:</strong> Funeral costs and medical bills</li>
+                            <li><strong>VA Benefits:</strong> Consider your existing VA life insurance</li>
+                        </ul>
+                        <p><strong>Veteran-Specific Considerations:</strong> Factor in your military pension, VA disability benefits, and any existing SGLI coverage. Our specialists can help you determine the right amount for your unique situation.</p>
+                    </div>
+                </div>
+                
+                <div class="mobile-faq-item">
+                    <div class="mobile-faq-question">
+                        <h3>Are there special rates for veterans?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="mobile-faq-answer">
+                        <p><strong>Yes! Veterans receive exclusive discounts and special programs.</strong></p>
+                        <ul>
+                            <li><strong>Veteran Discounts:</strong> Up to 15% off standard rates</li>
+                            <li><strong>Military Service Recognition:</strong> Special underwriting consideration</li>
+                            <li><strong>VA Benefits Integration:</strong> Coordinate with your existing VA coverage</li>
+                            <li><strong>Service-Connected Disability:</strong> Specialized programs available</li>
+                            <li><strong>Combat Veteran Programs:</strong> Enhanced benefits for combat service</li>
+                        </ul>
+                        <p><strong>Our Pricing:</strong> Term life starting at $30/month, whole life at $50/month, and universal life at $100/month. These rates are specifically designed for veterans and their families.</p>
+                    </div>
+                </div>
+                
+                <div class="mobile-faq-item">
+                    <div class="mobile-faq-question">
+                        <h3>Can I get life insurance if I have a service-connected disability?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="mobile-faq-answer">
+                        <p><strong>Absolutely! Veterans with service-connected disabilities can qualify for life insurance.</strong></p>
+                        <ul>
+                            <li><strong>Guaranteed Issue:</strong> Available regardless of health conditions</li>
+                            <li><strong>Simplified Issue:</strong> No medical exam, limited health questions</li>
+                            <li><strong>VA Disability Rating:</strong> Special consideration for VA-rated conditions</li>
+                            <li><strong>Combat-Related:</strong> Enhanced programs for combat-related disabilities</li>
+                            <li><strong>Mental Health:</strong> Specialized programs for PTSD and other conditions</li>
+                        </ul>
+                        <p><strong>Important:</strong> Your VA disability rating and the specific nature of your service-connected condition will determine the best available options. Our specialists are trained to work with veterans with disabilities and can help you find the right coverage.</p>
+                    </div>
+                </div>
+                
+                <div class="mobile-faq-item">
+                    <div class="mobile-faq-question">
+                        <h3>How long does it take to get approved?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="mobile-faq-answer">
+                        <p><strong>Approval times vary by policy type:</strong></p>
+                        <ul>
+                            <li><strong>Instant Approval:</strong> Some no-exam policies approved same day</li>
+                            <li><strong>24-48 Hours:</strong> Most simplified issue policies</li>
+                            <li><strong>1-2 Weeks:</strong> Accelerated underwriting with medical records</li>
+                            <li><strong>2-6 Weeks:</strong> Traditional policies with medical exams</li>
+                            <li><strong>Same Day Coverage:</strong> Immediate temporary coverage available</li>
+                        </ul>
+                        <p><strong>Veteran Advantage:</strong> Our streamlined process for veterans often results in faster approvals. We can also provide temporary coverage while your application is being processed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile CTA Section -->
+    <section class="mobile-cta-section">
+        <div class="mobile-container">
+            <div class="mobile-cta-content">
+                <h3>Ready to see how much you can save?</h3>
+                <p>Compare rates from top insurance companies and find the best coverage for your family.</p>
+                <a href="#quote" class="mobile-btn mobile-btn-large mobile-btn-primary">Get Your Free Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Footer -->
+    <footer class="mobile-footer">
+        <div class="mobile-container">
+            <div class="mobile-footer-content">
+                <div class="mobile-footer-section">
+                    <h4>Veteran Valor Life Insurance</h4>
+                    <p>Dedicated to serving our nation's heroes with affordable, comprehensive life insurance coverage.</p>
+                </div>
+                <div class="mobile-footer-section">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> 1-800-VET-INSURANCE</p>
+                    <p><i class="fas fa-envelope"></i> info@veteranvalorlifeinsurance.com</p>
+                </div>
+            </div>
+            <div class="mobile-footer-bottom">
+                <p>&copy; 2024 Veteran Valor Life Insurance. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Contact Modal -->
+    <div class="mobile-contact-modal" id="mobile-contact-modal">
+        <div class="mobile-modal-overlay">
+            <div class="mobile-modal-content">
+                <div class="mobile-modal-header">
+                    <h3>Contact Us</h3>
+                    <button class="mobile-close-modal-btn" onclick="closeMobileContactModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="mobile-contact-grid">
+                    <div class="mobile-contact-box phone-box">
+                        <div class="mobile-contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <p class="mobile-contact-number">1-800-VET-INSURANCE</p>
+                        <p class="mobile-contact-subtitle">Speak with a veteran specialist</p>
+                        <div class="mobile-contact-action">
+                            <a href="tel:+15419122048">Call Now <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="mobile-contact-box appointment-box">
+                        <div class="mobile-contact-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4>Schedule Appointment</h4>
+                        <p class="mobile-contact-number">Free Consultation</p>
+                        <p class="mobile-contact-subtitle">Book a time that works for you</p>
+                        <div class="mobile-contact-action">
+                            <a href="https://calendly.com/veteranvalor/consultation" target="_blank">Book Now <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="mobile-contact-box hours-box">
+                        <div class="mobile-contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Business Hours</h4>
+                        <p class="mobile-contact-number">Mon-Fri: 8AM-8PM</p>
+                        <p class="mobile-contact-subtitle">Sat: 9AM-5PM EST</p>
+                        <div class="mobile-contact-action">
+                            <span>Available Now</span>
+                        </div>
+                    </div>
+                    <div class="mobile-contact-box specialist-box">
+                        <div class="mobile-contact-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Veteran Specialist</h4>
+                        <p class="mobile-contact-number">Connor Morton</p>
+                        <p class="mobile-contact-subtitle">Licensed Insurance Agent</p>
+                        <div class="mobile-contact-action">
+                            <span>Ready to Help</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Post-Submission Modal -->
+    <div class="mobile-post-submission-modal" id="mobile-post-submission-modal">
+        <div class="mobile-modal-overlay">
+            <div class="mobile-modal-content">
+                <div class="mobile-modal-header">
+                    <h3>Thank You!</h3>
+                    <button class="mobile-close-modal-btn" onclick="closeMobilePostSubmissionModal()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="mobile-modal-actions">
+                    <h4>What would you like to do next?</h4>
+                    <div class="mobile-action-buttons">
+                        <a href="https://calendly.com/veteranvalor/consultation" target="_blank" class="mobile-appointment-btn">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div>
+                                <strong>Book Free Consultation</strong>
+                                <span>Schedule a call with our veteran specialist</span>
+                            </div>
+                        </a>
+                        <a href="tel:+15419122048" class="mobile-call-btn">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Call Now</strong>
+                                <span>Speak with us immediately</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Chatbot -->
+    <div class="mobile-chatbot-container" id="mobile-chatbot-container">
+        <div class="mobile-chatbot-header">
+            <div class="mobile-chatbot-title">
+                <i class="fas fa-comments"></i>
+                <span>Veteran Valor Assistant</span>
+            </div>
+            <button class="mobile-chatbot-close" onclick="closeMobileChatbot()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-chatbot-messages" id="mobile-chatbot-messages">
+            <!-- Messages will be added here -->
+        </div>
+        <div class="mobile-chatbot-input-container">
+            <input type="text" id="mobile-chatbot-input" placeholder="Type your message..." autocomplete="off">
+            <button id="mobile-chatbot-send" onclick="sendMobileMessage()">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Chatbot Toggle -->
+    <div class="mobile-chatbot-toggle" id="mobile-chatbot-toggle" onclick="toggleMobileChatbot()">
+        <i class="fas fa-comments"></i>
+        <span class="mobile-chatbot-toggle-text">Need Help?</span>
+    </div>
+
+    <script src="mobile-script.js"></script>
+</body>
+</html> 
