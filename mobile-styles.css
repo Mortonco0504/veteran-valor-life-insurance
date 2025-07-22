@@ -425,6 +425,43 @@ body {
     box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
 }
 
+.mobile-date-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.mobile-date-input-container input[type="date"] {
+    flex: 1;
+    padding-right: 50px;
+}
+
+.mobile-calendar-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-calendar-btn:hover {
+    background: #1e3a8a;
+}
+
+.mobile-calendar-btn i {
+    font-size: 16px;
+}
+
 .mobile-checkbox-group {
     margin: 20px 0;
 }

@@ -507,7 +507,7 @@ function handleMobileFormSubmission(event) {
         email: formData.get('email'),
         birthDate: formData.get('birthDate'),
         coverage: formData.get('coverage'),
-        policyType: formData.get('policyType')
+        branchOfService: formData.get('branchOfService')
     };
     
     // Validate form
@@ -537,7 +537,7 @@ function handleMobileFormSubmission(event) {
 }
 
 function validateMobileForm(formData) {
-    if (!formData.firstName || !formData.lastName || !formData.phone || !formData.email || !formData.birthDate || !formData.coverage || !formData.policyType) {
+    if (!formData.firstName || !formData.lastName || !formData.phone || !formData.email || !formData.birthDate || !formData.coverage || !formData.branchOfService) {
         showMobileErrorMessage('Please fill in all required fields.');
         return false;
     }
@@ -650,7 +650,7 @@ Phone: ${formData.phone}
 Email: ${formData.email}
 Date of Birth: ${formData.birthDate}
 Coverage Amount: ${formData.coverage}
-Policy Type: ${formData.policyType}
+Branch of Service: ${formData.branchOfService}
 Submitted At: ${new Date().toLocaleString()}
 
 Website: veteranvalorlifeinsurance.com (Mobile)
@@ -686,7 +686,7 @@ Name: ${formData.firstName} ${formData.lastName}
 Phone: ${formData.phone}
 Email: ${formData.email}
 Coverage: ${formData.coverage}
-Policy: ${formData.policyType}
+Branch of Service: ${formData.branchOfService}
 Submitted: ${new Date().toLocaleString()}
 
 Website: veteranvalorlifeinsurance.com (Mobile)
@@ -726,7 +726,7 @@ function addMobileToGoogleSheets(formData) {
         'REGION': '',
         'Lead Stage': 'Raw lead - Mobile Website form - Submit',
         'Coverage Amount': formData.coverage,
-        'Policy Type': formData.policyType,
+        'Branch of Service': formData.branchOfService,
         'Date of Birth': formData.birthDate,
         'Website': 'veteranvalorlifeinsurance.com (Mobile)'
     };
@@ -789,6 +789,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Global functions for HTML onclick handlers
+function openMobileCalendar() {
+    const dateInput = document.getElementById('mobile-birthDate');
+    if (dateInput) {
+        dateInput.showPicker();
+    }
+}
+
 function toggleMobileChatbot() {
     const chatbot = window.mobileChatbot;
     if (chatbot) {

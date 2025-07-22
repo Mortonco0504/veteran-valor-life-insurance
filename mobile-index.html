@@ -137,7 +137,12 @@
                     <div class="mobile-form-row">
                         <div class="mobile-form-group">
                             <label for="mobile-birthDate">Date of Birth</label>
-                            <input type="date" id="mobile-birthDate" name="birthDate" required autocomplete="bday">
+                            <div class="mobile-date-input-container">
+                                <input type="date" id="mobile-birthDate" name="birthDate" required autocomplete="bday">
+                                <button type="button" class="mobile-calendar-btn" onclick="openMobileCalendar()">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </button>
+                            </div>
                         </div>
                         <div class="mobile-form-group">
                             <label for="mobile-coverage">Coverage Amount</label>
@@ -155,12 +160,21 @@
                         </div>
                     </div>
                     <div class="mobile-form-group">
-                        <label for="mobile-policyType">Policy Type</label>
-                        <select id="mobile-policyType" name="policyType" required>
-                            <option value="">Select Policy Type</option>
-                            <option value="Term Life">Term Life - $30/month</option>
-                            <option value="Whole Life">Whole Life - $50/month</option>
-                            <option value="Universal Life">Universal Life - $100/month</option>
+                        <label for="mobile-branchOfService">Branch of Service</label>
+                        <select id="mobile-branchOfService" name="branchOfService" required>
+                            <option value="">Select Branch of Service</option>
+                            <option value="Army">Army</option>
+                            <option value="Navy">Navy</option>
+                            <option value="Air Force">Air Force</option>
+                            <option value="Marine Corps">Marine Corps</option>
+                            <option value="Coast Guard">Coast Guard</option>
+                            <option value="Space Force">Space Force</option>
+                            <option value="National Guard">National Guard</option>
+                            <option value="Reserves">Reserves</option>
+                            <option value="Veteran">Veteran (Discharged)</option>
+                            <option value="Active Duty">Active Duty</option>
+                            <option value="Spouse/Dependent">Spouse/Dependent</option>
+                            <option value="Civilian">Civilian</option>
                         </select>
                     </div>
                     <div class="mobile-checkbox-group">
