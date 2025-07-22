@@ -53,6 +53,34 @@ body {
     padding: 15px 20px;
 }
 
+.mobile-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mobile-desktop-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: rgba(30, 64, 175, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.mobile-desktop-link:hover {
+    background: rgba(30, 64, 175, 0.2);
+}
+
+.mobile-desktop-link i {
+    font-size: 12px;
+}
+
 .mobile-logo {
     display: flex;
     align-items: center;
