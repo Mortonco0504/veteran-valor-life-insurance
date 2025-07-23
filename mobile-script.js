@@ -520,6 +520,11 @@ function handleMobileFormSubmission(event) {
     
     // Simulate form submission
     setTimeout(() => {
+        // Track Google Ads conversion
+        if (typeof trackFormSubmission === 'function') {
+            trackFormSubmission();
+        }
+        
         // Send notifications
         sendMobileLeadNotifications(data);
         

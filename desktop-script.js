@@ -704,6 +704,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const formData = new FormData(quoteForm);
             const data = Object.fromEntries(formData);
             
+            // Track Google Ads conversion
+            if (typeof trackFormSubmission === 'function') {
+                trackFormSubmission();
+            }
+            
             // Send notifications
             sendLeadNotifications(data);
             

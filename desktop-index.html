@@ -86,6 +86,44 @@
     <link rel="stylesheet" href="desktop-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Ads Conversion Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-CONVERSION_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-CONVERSION_ID');
+        
+        // Google Ads Conversion Tracking Functions
+        function trackGoogleAdsConversion(conversionId, conversionLabel, value = null) {
+            gtag('event', 'conversion', {
+                'send_to': `AW-${conversionId}/${conversionLabel}`,
+                'value': value,
+                'currency': 'USD'
+            });
+        }
+        
+        // Track form submissions
+        function trackFormSubmission() {
+            trackGoogleAdsConversion('CONVERSION_ID', 'FORM_SUBMISSION_LABEL', 1);
+        }
+        
+        // Track phone calls
+        function trackPhoneCall() {
+            trackGoogleAdsConversion('CONVERSION_ID', 'PHONE_CALL_LABEL', 1);
+        }
+        
+        // Track quote requests
+        function trackQuoteRequest() {
+            trackGoogleAdsConversion('CONVERSION_ID', 'QUOTE_REQUEST_LABEL', 1);
+        }
+        
+        // Track appointment bookings
+        function trackAppointmentBooking() {
+            trackGoogleAdsConversion('CONVERSION_ID', 'APPOINTMENT_LABEL', 1);
+        }
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -111,7 +149,7 @@
                 <div class="header-cta">
                     <div class="header-phone">
                         <i class="fas fa-phone"></i>
-                        <a href="tel:+15419122048" class="phone-link">1-800-VET-INSURANCE</a>
+                        <a href="tel:+15419122048" class="phone-link" onclick="if(typeof trackPhoneCall === 'function') trackPhoneCall();">1-800-VET-INSURANCE</a>
                     </div>
                     <a href="#quote" class="btn btn-primary btn-header">
                         <i class="fas fa-shield-alt"></i>
@@ -658,7 +696,7 @@
                 <div class="footer-section">
                     <h4>Contact Info</h4>
                     <div class="contact-info">
-                        <p><i class="fas fa-phone"></i> <a href="tel:+15419122048" class="phone-link">1-800-VET-INSURANCE</a></p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+15419122048" class="phone-link" onclick="if(typeof trackPhoneCall === 'function') trackPhoneCall();">1-800-VET-INSURANCE</a></p>
                         <p><i class="fas fa-envelope"></i> info@veteranvalor.com</p>
                         <p><i class="fas fa-map-marker-alt"></i> 123 Veteran Way, Suite 100<br>Washington, DC 20001</p>
                     </div>
