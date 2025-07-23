@@ -1,0 +1,120 @@
+<!-- Blog Section -->
+<section class="blog-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Veteran Life Insurance Blog</h2>
+            <p>Expert insights and guides for veterans, military personnel, and first responders</p>
+        </div>
+        
+        <div class="blog-grid">
+            <!-- Blog Card 1 -->
+            <div class="blog-card" data-blog="1">
+                <div class="blog-card-header">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">January 20, 2025</span>
+                        <span class="blog-read-time">5 min read</span>
+                    </div>
+                    <h3 class="blog-title">Complete Guide to Life Insurance for Veterans</h3>
+                    <p class="blog-excerpt">Comprehensive guide covering everything from VA benefits to private options, rates, coverage, and protection for your family.</p>
+                    <a href="#" class="blog-read-more">Read Full Guide →</a>
+                </div>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="blog-card" data-blog="2">
+                <div class="blog-card-header">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">January 21, 2025</span>
+                        <span class="blog-read-time">4 min read</span>
+                    </div>
+                    <h3 class="blog-title">VA Life Insurance vs. Private Life Insurance</h3>
+                    <p class="blog-excerpt">Detailed comparison of VA and private life insurance options, including pros, cons, costs, and coverage limits.</p>
+                    <a href="#" class="blog-read-more">Read Comparison →</a>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="blog-card" data-blog="3">
+                <div class="blog-card-header">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">January 22, 2025</span>
+                        <span class="blog-read-time">6 min read</span>
+                    </div>
+                    <h3 class="blog-title">Veteran Life Insurance: No Medical Exam Options</h3>
+                    <p class="blog-excerpt">Explore no-medical-exam life insurance options for veterans, including guaranteed issue, simplified issue, and accelerated underwriting.</p>
+                    <a href="#" class="blog-read-more">Learn More →</a>
+                </div>
+            </div>
+
+            <!-- Blog Card 4 -->
+            <div class="blog-card" data-blog="4">
+                <div class="blog-card-header">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">January 23, 2025</span>
+                        <span class="blog-read-time">5 min read</span>
+                    </div>
+                    <h3 class="blog-title">Military Life Insurance: What Happens After Service?</h3>
+                    <p class="blog-excerpt">Understanding your military life insurance options after separation, including SGLI, VGLI, and private insurance benefits.</p>
+                    <a href="#" class="blog-read-more">Read Guide →</a>
+                </div>
+            </div>
+
+            <!-- Blog Card 5 -->
+            <div class="blog-card" data-blog="5">
+                <div class="blog-card-header">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">January 24, 2025</span>
+                        <span class="blog-read-time">7 min read</span>
+                    </div>
+                    <h3 class="blog-title">Top 10 Life Insurance Companies for Veterans</h3>
+                    <p class="blog-excerpt">Comprehensive review of the best life insurance companies for veterans, including policies, rates, and customer service.</p>
+                    <a href="#" class="blog-read-more">View Companies →</a>
+                </div>
+            </div>
+
+            <!-- Blog Card 6 -->
+            <div class="blog-card" data-blog="6">
+                <div class="blog-card-header">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="blog-card-content">
+                    <div class="blog-meta">
+                        <span class="blog-date">January 25, 2025</span>
+                        <span class="blog-read-time">3 min read</span>
+                    </div>
+                    <h3 class="blog-title">Veteran Life Insurance Rates Comparison</h3>
+                    <p class="blog-excerpt">Compare veteran life insurance rates from top companies and understand the factors that affect your premiums.</p>
+                    <a href="#" class="blog-read-more">Compare Rates →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Popup Modal -->
+<div class="blog-popup" id="blogPopup">
+    <div class="blog-popup-overlay"></div>
+    <div class="blog-popup-content">
+        <button class="blog-popup-close" id="blogPopupClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="blog-popup-body" id="blogPopupBody">
+            <!-- Content will be loaded here -->
+        </div>
+    </div>
+</div> 

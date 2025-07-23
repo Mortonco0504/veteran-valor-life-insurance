@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.htaccess
+Disallow: /logs/
+Disallow: /backup/
+
+Sitemap: https://veteranvalorlifeinsurance.com/sitemap.xml

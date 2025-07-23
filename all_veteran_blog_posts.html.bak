@@ -2,14 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data:; font-src 'self' https: data:;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veteran Life Insurance Blog - Complete Guide | Veteran Valor</title>
     <meta name="description" content="Complete veteran life insurance blog with 5 comprehensive guides. Learn about VA benefits, private insurance, no medical exam options, and top companies for veterans.">
