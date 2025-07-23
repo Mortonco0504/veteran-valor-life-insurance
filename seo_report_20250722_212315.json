@@ -1,0 +1,105 @@
+{
+  "timestamp": "2025-07-22T21:23:15.640365",
+  "website_url": "https://veteranvalorlifeinsurance.com",
+  "health_data": {
+    "status_code": 200,
+    "accessible": true,
+    "response_time": 0.065464,
+    "ssl_secure": true,
+    "content_length": 90206,
+    "last_checked": "2025-07-22T21:23:15.639730"
+  },
+  "speed_data": {
+    "mobile_score": 89,
+    "desktop_score": 88,
+    "first_contentful_paint": 2.4,
+    "largest_contentful_paint": 2.5,
+    "cumulative_layout_shift": 0.05,
+    "last_checked": "2025-07-22T21:23:15.640124"
+  },
+  "seo_data": {
+    "meta_title_length": 34,
+    "meta_description_length": 126,
+    "heading_structure": "Good",
+    "image_alt_tags": 85,
+    "internal_links": 19,
+    "external_links": 3,
+    "keyword_density": 1.6,
+    "readability_score": 94,
+    "last_checked": "2025-07-22T21:23:15.640158"
+  },
+  "keyword_results": {
+    "veteran life insurance": {
+      "keyword": "veteran life insurance",
+      "total_results": "605,981",
+      "estimated_position": 41,
+      "search_volume": 8994,
+      "competition": 5,
+      "last_checked": "2025-07-22T21:23:15.640192"
+    },
+    "military life insurance": {
+      "keyword": "military life insurance",
+      "total_results": "404,505",
+      "estimated_position": 15,
+      "search_volume": 5351,
+      "competition": 12,
+      "last_checked": "2025-07-22T21:23:15.640217"
+    },
+    "veteran life insurance rates": {
+      "keyword": "veteran life insurance rates",
+      "total_results": "980,920",
+      "estimated_position": 18,
+      "search_volume": 2846,
+      "competition": 62,
+      "last_checked": "2025-07-22T21:23:15.640239"
+    },
+    "best life insurance for veterans": {
+      "keyword": "best life insurance for veterans",
+      "total_results": "523,870",
+      "estimated_position": 27,
+      "search_volume": 9157,
+      "competition": 14,
+      "last_checked": "2025-07-22T21:23:15.640258"
+    },
+    "veteran life insurance quotes": {
+      "keyword": "veteran life insurance quotes",
+      "total_results": "760,499",
+      "estimated_position": 30,
+      "search_volume": 8272,
+      "competition": 28,
+      "last_checked": "2025-07-22T21:23:15.640277"
+    },
+    "military life insurance coverage": {
+      "keyword": "military life insurance coverage",
+      "total_results": "487,020",
+      "estimated_position": 18,
+      "search_volume": 7435,
+      "competition": 29,
+      "last_checked": "2025-07-22T21:23:15.640295"
+    },
+    "veteran life insurance policy": {
+      "keyword": "veteran life insurance policy",
+      "total_results": "679,664",
+      "estimated_position": 21,
+      "search_volume": 1051,
+      "competition": 44,
+      "last_checked": "2025-07-22T21:23:15.640317"
+    },
+    "life insurance for veterans": {
+      "keyword": "life insurance for veterans",
+      "total_results": "752,357",
+      "estimated_position": 43,
+      "search_volume": 8002,
+      "competition": 63,
+      "last_checked": "2025-07-22T21:23:15.640336"
+    },
+    "veteran life insurance companies": {
+      "keyword": "veteran life insurance companies",
+      "total_results": "917,722",
+      "estimated_position": 49,
+      "search_volume": 3688,
+      "competition": 50,
+      "last_checked": "2025-07-22T21:23:15.640354"
+    }
+  }
+}

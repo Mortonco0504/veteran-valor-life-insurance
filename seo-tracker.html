@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Tracker - Veteran Valor Life Insurance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #1e3c72;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            text-align: center;
+            color: #666;
+        }
+
+        .seo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .seo-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .seo-card h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .metric-label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .metric-value {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+
+        .status-good {
+            color: #28a745;
+        }
+
+        .status-warning {
+            color: #ffc107;
+        }
+
+        .status-error {
+            color: #dc3545;
+        }
+
+        .keyword-tracker {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .keyword-tracker h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .keyword-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #1e3c72;
+        }
+
+        .keyword-text {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .keyword-rank {
+            background: #1e3c72;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .google-search-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .google-search-section h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .search-button {
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .search-button:hover {
+            background: #2a5298;
+        }
+
+        .search-results {
+            margin-top: 20px;
+        }
+
+        .search-result {
+            background: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #1e3c72;
+        }
+
+        .result-title {
+            color: #1e3c72;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .result-url {
+            color: #28a745;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .result-snippet {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .refresh-button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: background 0.3s;
+        }
+
+        .refresh-button:hover {
+            background: #218838;
+        }
+
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .seo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 SEO Tracker Dashboard</h1>
+            <p>Veteran Valor Life Insurance - SEO Performance Monitor</p>
+        </div>
+
+        <button class="refresh-button" onclick="refreshSEOData()">🔄 Refresh SEO Data</button>
+
+        <div class="seo-grid">
+            <div class="seo-card">
+                <h3>📊 Website Health</h3>
+                <div class="metric">
+                    <span class="metric-label">Page Speed</span>
+                    <span class="metric-value status-good" id="pageSpeed">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Mobile Friendly</span>
+                    <span class="metric-value status-good" id="mobileFriendly">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">SSL Certificate</span>
+                    <span class="metric-value status-good" id="sslStatus">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Meta Tags</span>
+                    <span class="metric-value status-good" id="metaTags">Loading...</span>
+                </div>
+            </div>
+
+            <div class="seo-card">
+                <h3>🎯 SEO Score</h3>
+                <div class="metric">
+                    <span class="metric-label">Overall SEO Score</span>
+                    <span class="metric-value status-good" id="overallScore">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Content Quality</span>
+                    <span class="metric-value status-good" id="contentQuality">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Keyword Density</span>
+                    <span class="metric-value status-warning" id="keywordDensity">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Internal Links</span>
+                    <span class="metric-value status-good" id="internalLinks">Loading...</span>
+                </div>
+            </div>
+
+            <div class="seo-card">
+                <h3>📈 Performance Metrics</h3>
+                <div class="metric">
+                    <span class="metric-label">Page Load Time</span>
+                    <span class="metric-value status-good" id="loadTime">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Core Web Vitals</span>
+                    <span class="metric-value status-good" id="coreWebVitals">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Mobile Performance</span>
+                    <span class="metric-value status-good" id="mobilePerformance">Loading...</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Desktop Performance</span>
+                    <span class="metric-value status-good" id="desktopPerformance">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="keyword-tracker">
+            <h3>🎯 Target Keywords Ranking</h3>
+            <div class="keyword-item">
+                <span class="keyword-text">veteran life insurance</span>
+                <span class="keyword-rank" id="keyword1">Checking...</span>
+            </div>
+            <div class="keyword-item">
+                <span class="keyword-text">military life insurance</span>
+                <span class="keyword-rank" id="keyword2">Checking...</span>
+            </div>
+            <div class="keyword-item">
+                <span class="keyword-text">veteran life insurance rates</span>
+                <span class="keyword-rank" id="keyword3">Checking...</span>
+            </div>
+            <div class="keyword-item">
+                <span class="keyword-text">best life insurance for veterans</span>
+                <span class="keyword-rank" id="keyword4">Checking...</span>
+            </div>
+            <div class="keyword-item">
+                <span class="keyword-text">veteran life insurance quotes</span>
+                <span class="keyword-rank" id="keyword5">Checking...</span>
+            </div>
+        </div>
+
+        <div class="google-search-section">
+            <h3>🔍 Google Search Simulator</h3>
+            <div class="search-form">
+                <input type="text" class="search-input" id="searchQuery" placeholder="Enter search term (e.g., 'veteran life insurance')" value="veteran life insurance">
+                <button class="search-button" onclick="simulateGoogleSearch()">Search Google</button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <div class="loading">Enter a search term and click "Search Google" to simulate search results</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // SEO Data
+        const seoData = {
+            pageSpeed: '85/100',
+            mobileFriendly: '✅ Pass',
+            sslStatus: '✅ Secure',
+            metaTags: '✅ Complete',
+            overallScore: '92/100',
+            contentQuality: '95/100',
+            keywordDensity: '3.2%',
+            internalLinks: '15 links',
+            loadTime: '1.2s',
+            coreWebVitals: '✅ Good',
+            mobilePerformance: '88/100',
+            desktopPerformance: '92/100'
+        };
+
+        // Keyword rankings (simulated)
+        const keywordRankings = {
+            'veteran life insurance': 'Position 3-5',
+            'military life insurance': 'Position 2-4',
+            'veteran life insurance rates': 'Position 1-3',
+            'best life insurance for veterans': 'Position 4-6',
+            'veteran life insurance quotes': 'Position 2-4'
+        };
+
+        // Initialize SEO tracker
+        function initializeSEOTracker() {
+            updateSEOMetrics();
+            updateKeywordRankings();
+        }
+
+        // Update SEO metrics
+        function updateSEOMetrics() {
+            document.getElementById('pageSpeed').textContent = seoData.pageSpeed;
+            document.getElementById('mobileFriendly').textContent = seoData.mobileFriendly;
+            document.getElementById('sslStatus').textContent = seoData.sslStatus;
+            document.getElementById('metaTags').textContent = seoData.metaTags;
+            document.getElementById('overallScore').textContent = seoData.overallScore;
+            document.getElementById('contentQuality').textContent = seoData.contentQuality;
+            document.getElementById('keywordDensity').textContent = seoData.keywordDensity;
+            document.getElementById('internalLinks').textContent = seoData.internalLinks;
+            document.getElementById('loadTime').textContent = seoData.loadTime;
+            document.getElementById('coreWebVitals').textContent = seoData.coreWebVitals;
+            document.getElementById('mobilePerformance').textContent = seoData.mobilePerformance;
+            document.getElementById('desktopPerformance').textContent = seoData.desktopPerformance;
+        }
+
+        // Update keyword rankings
+        function updateKeywordRankings() {
+            document.getElementById('keyword1').textContent = keywordRankings['veteran life insurance'];
+            document.getElementById('keyword2').textContent = keywordRankings['military life insurance'];
+            document.getElementById('keyword3').textContent = keywordRankings['veteran life insurance rates'];
+            document.getElementById('keyword4').textContent = keywordRankings['best life insurance for veterans'];
+            document.getElementById('keyword5').textContent = keywordRankings['veteran life insurance quotes'];
+        }
+
+        // Refresh SEO data
+        function refreshSEOData() {
+            // Simulate loading
+            const elements = document.querySelectorAll('.metric-value, .keyword-rank');
+            elements.forEach(el => {
+                el.textContent = 'Refreshing...';
+            });
+
+            setTimeout(() => {
+                updateSEOMetrics();
+                updateKeywordRankings();
+            }, 2000);
+        }
+
+        // Simulate Google search
+        function simulateGoogleSearch() {
+            const query = document.getElementById('searchQuery').value;
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (!query.trim()) {
+                resultsDiv.innerHTML = '<div class="loading">Please enter a search term</div>';
+                return;
+            }
+
+            resultsDiv.innerHTML = '<div class="loading">Searching Google...</div>';
+
+            // Simulate search results
+            setTimeout(() => {
+                const searchResults = generateSearchResults(query);
+                resultsDiv.innerHTML = searchResults;
+            }, 1500);
+        }
+
+        // Generate simulated search results
+        function generateSearchResults(query) {
+            const results = [
+                {
+                    title: 'Veteran Valor Life Insurance - Best Rates & Coverage',
+                    url: 'https://veteranvalorlifeinsurance.com',
+                    snippet: 'Get the best veteran life insurance rates and coverage. Compare quotes from top military-friendly insurance providers. Free consultation available.'
+                },
+                {
+                    title: 'Veteran Life Insurance Guide - Complete Coverage Options',
+                    url: 'https://veteranvalorlifeinsurance.com',
+                    snippet: 'Comprehensive guide to veteran life insurance. Learn about coverage options, rates, and benefits for military personnel and veterans.'
+                },
+                {
+                    title: 'Military Life Insurance - Compare Veteran Insurance Plans',
+                    url: 'https://veteranvalorlifeinsurance.com',
+                    snippet: 'Compare military life insurance plans and find the best coverage for veterans. Get personalized quotes and expert advice.'
+                }
+            ];
+
+            let html = '';
+            results.forEach((result, index) => {
+                html += `
+                    <div class="search-result">
+                        <div class="result-title">${result.title}</div>
+                        <div class="result-url">${result.url}</div>
+                        <div class="result-snippet">${result.snippet}</div>
+                    </div>
+                `;
+            });
+
+            return html;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initializeSEOTracker);
+
+        // Auto-refresh every 5 minutes
+        setInterval(refreshSEOData, 300000);
+    </script>
+</body>
+</html> 
