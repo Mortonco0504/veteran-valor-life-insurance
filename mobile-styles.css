@@ -1128,4 +1128,293 @@ body {
 /* Smooth scrolling */
 html {
     scroll-behavior: smooth;
+}
+
+/* Mobile Blog Section Styles */
+.mobile-blog-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.mobile-section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mobile-section-header h3 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.mobile-section-header p {
+    color: var(--medium-gray);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.mobile-blog-toc {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    margin-bottom: 30px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.mobile-blog-toc h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.mobile-blog-toc ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mobile-blog-toc li {
+    margin-bottom: 10px;
+}
+
+.mobile-blog-toc a {
+    color: var(--dark-gray);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 8px 0;
+    border-radius: 6px;
+    padding-left: 8px;
+    font-size: 0.9rem;
+}
+
+.mobile-blog-toc a:hover {
+    color: var(--primary-color);
+    background: rgba(30, 64, 175, 0.1);
+    transform: translateX(3px);
+}
+
+.mobile-blog-post {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    margin-bottom: 30px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mobile-blog-post:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.mobile-blog-header {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: 20px;
+    text-align: center;
+}
+
+.mobile-blog-header h4 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--white);
+    font-weight: 600;
+}
+
+.mobile-blog-meta {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    color: var(--white);
+}
+
+.mobile-blog-content {
+    padding: 25px 20px;
+}
+
+.mobile-blog-content h5 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin: 25px 0 10px 0;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+    font-weight: 600;
+}
+
+.mobile-blog-content h6 {
+    color: var(--dark-gray);
+    font-size: 1rem;
+    margin: 20px 0 8px 0;
+    font-weight: 600;
+}
+
+.mobile-blog-content p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.mobile-blog-content ul {
+    margin: 12px 0;
+    padding-left: 20px;
+}
+
+.mobile-blog-content li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.mobile-blog-content strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.mobile-comparison-table {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.mobile-comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    font-size: 0.85rem;
+}
+
+.mobile-comparison-table th {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: 12px 8px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.mobile-comparison-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+.mobile-comparison-table tr:hover {
+    background: rgba(30, 64, 175, 0.05);
+}
+
+.mobile-blog-cta {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e3a8a 100%);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 25px 0;
+    text-align: center;
+}
+
+.mobile-blog-cta h6 {
+    color: var(--white);
+    font-size: 1rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.mobile-blog-cta p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.mobile-blog-cta .mobile-btn {
+    background: var(--white);
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.mobile-blog-cta .mobile-btn:hover {
+    background: #f8fafc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive Mobile Blog Styles */
+@media (max-width: 480px) {
+    .mobile-blog-section {
+        padding: 40px 0;
+    }
+    
+    .mobile-section-header h3 {
+        font-size: 1.5rem;
+    }
+    
+    .mobile-blog-toc {
+        padding: 15px;
+        margin-bottom: 25px;
+    }
+    
+    .mobile-blog-header {
+        padding: 15px;
+    }
+    
+    .mobile-blog-header h4 {
+        font-size: 1.1rem;
+    }
+    
+    .mobile-blog-content {
+        padding: 20px 15px;
+    }
+    
+    .mobile-blog-content h5 {
+        font-size: 1rem;
+    }
+    
+    .mobile-blog-content h6 {
+        font-size: 0.9rem;
+    }
+    
+    .mobile-blog-content p {
+        font-size: 0.9rem;
+    }
+    
+    .mobile-blog-content li {
+        font-size: 0.85rem;
+    }
+    
+    .mobile-comparison-table {
+        font-size: 0.75rem;
+    }
+    
+    .mobile-comparison-table th,
+    .mobile-comparison-table td {
+        padding: 8px 6px;
+        font-size: 0.75rem;
+    }
+    
+    .mobile-blog-cta {
+        padding: 15px;
+    }
+    
+    .mobile-blog-cta h6 {
+        font-size: 0.9rem;
+    }
+    
+    .mobile-blog-cta p {
+        font-size: 0.85rem;
+    }
+    
+    .mobile-blog-cta .mobile-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
 } 
