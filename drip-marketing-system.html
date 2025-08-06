@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veteran Valor Drip Marketing System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .drip-campaigns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .campaign-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .campaign-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .campaign-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .campaign-title {
+            color: #1e40af;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .campaign-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #059669;
+        }
+
+        .status-draft {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .campaign-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        .email-sequence {
+            margin-top: 20px;
+        }
+
+        .email-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .email-info {
+            flex: 1;
+        }
+
+        .email-subject {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 5px;
+        }
+
+        .email-timing {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .email-status {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .status-sent {
+            background: #dcfce7;
+            color: #059669;
+        }
+
+        .status-scheduled {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-draft {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #1e40af;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .btn-success {
+            background: #059669;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #047857;
+        }
+
+        .leads-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .leads-section h3 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .leads-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .leads-table th,
+        .leads-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .leads-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .lead-status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-new {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-nurturing {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-ready {
+            background: #dcfce7;
+            color: #059669;
+        }
+
+        .status-converted {
+            background: #059669;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .drip-campaigns {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📧 Drip Marketing System</h1>
+            <p>Automated lead nurturing sequences for Veteran Valor Life Insurance</p>
+        </div>
+
+        <div class="drip-campaigns">
+            <!-- Welcome Series -->
+            <div class="campaign-card">
+                <div class="campaign-header">
+                    <div class="campaign-title">🎯 Welcome Series</div>
+                    <div class="campaign-status status-active">Active</div>
+                </div>
+                
+                <div class="campaign-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-label">Subscribers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">89.2%</div>
+                        <div class="stat-label">Open Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">12.5%</div>
+                        <div class="stat-label">Click Rate</div>
+                    </div>
+                </div>
+
+                <div class="email-sequence">
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Welcome to Veteran Valor Life Insurance</div>
+                            <div class="email-timing">Sent immediately after signup</div>
+                        </div>
+                        <div class="email-status status-sent">Sent</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Your Free Life Insurance Quote is Ready</div>
+                            <div class="email-timing">Sent 1 day after signup</div>
+                        </div>
+                        <div class="email-status status-sent">Sent</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Veteran Life Insurance: 5 Things You Need to Know</div>
+                            <div class="email-timing">Sent 3 days after signup</div>
+                        </div>
+                        <div class="email-status status-scheduled">Scheduled</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Special Veteran Benefits You Don't Want to Miss</div>
+                            <div class="email-timing">Sent 7 days after signup</div>
+                        </div>
+                        <div class="email-status status-draft">Draft</div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary">Edit Campaign</button>
+                    <button class="btn btn-secondary">View Analytics</button>
+                    <button class="btn btn-success">Add Email</button>
+                </div>
+            </div>
+
+            <!-- Nurture Series -->
+            <div class="campaign-card">
+                <div class="campaign-header">
+                    <div class="campaign-title">🌱 Lead Nurture Series</div>
+                    <div class="campaign-status status-active">Active</div>
+                </div>
+                
+                <div class="campaign-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">892</div>
+                        <div class="stat-label">Subscribers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">76.8%</div>
+                        <div class="stat-label">Open Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">8.9%</div>
+                        <div class="stat-label">Click Rate</div>
+                    </div>
+                </div>
+
+                <div class="email-sequence">
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">VA Life Insurance vs. Private Insurance: Which is Better?</div>
+                            <div class="email-timing">Sent 2 weeks after signup</div>
+                        </div>
+                        <div class="email-status status-sent">Sent</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">No Medical Exam Life Insurance for Veterans</div>
+                            <div class="email-timing">Sent 4 weeks after signup</div>
+                        </div>
+                        <div class="email-status status-scheduled">Scheduled</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Protecting Your Family: Life Insurance for Military Families</div>
+                            <div class="email-timing">Sent 6 weeks after signup</div>
+                        </div>
+                        <div class="email-status status-draft">Draft</div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary">Edit Campaign</button>
+                    <button class="btn btn-secondary">View Analytics</button>
+                    <button class="btn btn-success">Add Email</button>
+                </div>
+            </div>
+
+            <!-- Re-engagement Series -->
+            <div class="campaign-card">
+                <div class="campaign-header">
+                    <div class="campaign-title">🔄 Re-engagement Series</div>
+                    <div class="campaign-status status-active">Active</div>
+                </div>
+                
+                <div class="campaign-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">456</div>
+                        <div class="stat-label">Subscribers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">45.2%</div>
+                        <div class="stat-label">Open Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">5.8%</div>
+                        <div class="stat-label">Click Rate</div>
+                    </div>
+                </div>
+
+                <div class="email-sequence">
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">We Miss You! Special Veteran Life Insurance Offer</div>
+                            <div class="email-timing">Sent 30 days inactive</div>
+                        </div>
+                        <div class="email-status status-sent">Sent</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Limited Time: 20% Off Veteran Life Insurance</div>
+                            <div class="email-timing">Sent 45 days inactive</div>
+                        </div>
+                        <div class="email-status status-scheduled">Scheduled</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Final Notice: Your Veteran Benefits Are Expiring</div>
+                            <div class="email-timing">Sent 60 days inactive</div>
+                        </div>
+                        <div class="email-status status-draft">Draft</div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary">Edit Campaign</button>
+                    <button class="btn btn-secondary">View Analytics</button>
+                    <button class="btn btn-success">Add Email</button>
+                </div>
+            </div>
+
+            <!-- Conversion Series -->
+            <div class="campaign-card">
+                <div class="campaign-header">
+                    <div class="campaign-title">💰 Conversion Series</div>
+                    <div class="campaign-status status-draft">Draft</div>
+                </div>
+                
+                <div class="campaign-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">234</div>
+                        <div class="stat-label">Subscribers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">--</div>
+                        <div class="stat-label">Open Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">--</div>
+                        <div class="stat-label">Click Rate</div>
+                    </div>
+                </div>
+
+                <div class="email-sequence">
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Your Personalized Life Insurance Quote is Ready</div>
+                            <div class="email-timing">Sent when quote is ready</div>
+                        </div>
+                        <div class="email-status status-draft">Draft</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Exclusive Veteran Discount: Save Up to 40%</div>
+                            <div class="email-timing">Sent 3 days after quote</div>
+                        </div>
+                        <div class="email-status status-draft">Draft</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-info">
+                            <div class="email-subject">Final Call: Your Quote Expires in 24 Hours</div>
+                            <div class="email-timing">Sent 7 days after quote</div>
+                        </div>
+                        <div class="email-status status-draft">Draft</div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-primary">Edit Campaign</button>
+                    <button class="btn btn-secondary">View Analytics</button>
+                    <button class="btn btn-success">Activate Campaign</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="leads-section">
+            <h3>📊 Lead Management</h3>
+            <table class="leads-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Campaign</th>
+                        <th>Status</th>
+                        <th>Last Contact</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Smith</td>
+                        <td>john.smith@email.com</td>
+                        <td>(555) 123-4567</td>
+                        <td>Welcome Series</td>
+                        <td><span class="lead-status status-nurturing">Nurturing</span></td>
+                        <td>2 days ago</td>
+                        <td>
+                            <button class="btn btn-secondary">View</button>
+                            <button class="btn btn-primary">Contact</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sarah Johnson</td>
+                        <td>sarah.johnson@email.com</td>
+                        <td>(555) 234-5678</td>
+                        <td>Nurture Series</td>
+                        <td><span class="lead-status status-ready">Ready</span></td>
+                        <td>1 day ago</td>
+                        <td>
+                            <button class="btn btn-secondary">View</button>
+                            <button class="btn btn-success">Convert</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Michael Davis</td>
+                        <td>michael.davis@email.com</td>
+                        <td>(555) 345-6789</td>
+                        <td>Re-engagement</td>
+                        <td><span class="lead-status status-new">New</span></td>
+                        <td>5 days ago</td>
+                        <td>
+                            <button class="btn btn-secondary">View</button>
+                            <button class="btn btn-primary">Contact</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Emily Wilson</td>
+                        <td>emily.wilson@email.com</td>
+                        <td>(555) 456-7890</td>
+                        <td>Conversion Series</td>
+                        <td><span class="lead-status status-converted">Converted</span></td>
+                        <td>3 hours ago</td>
+                        <td>
+                            <button class="btn btn-secondary">View</button>
+                            <button class="btn btn-success">Follow Up</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Drip Marketing System
+        class DripMarketingSystem {
+            constructor() {
+                this.campaigns = [];
+                this.leads = [];
+                this.init();
+            }
+
+            init() {
+                this.loadCampaigns();
+                this.loadLeads();
+                this.setupEventListeners();
+            }
+
+            loadCampaigns() {
+                // Load campaign data
+                this.campaigns = [
+                    {
+                        id: 1,
+                        name: 'Welcome Series',
+                        status: 'active',
+                        subscribers: 1247,
+                        openRate: 89.2,
+                        clickRate: 12.5,
+                        emails: [
+                            { subject: 'Welcome to Veteran Valor Life Insurance', timing: 'immediate', status: 'sent' },
+                            { subject: 'Your Free Life Insurance Quote is Ready', timing: '1 day', status: 'sent' },
+                            { subject: 'Veteran Life Insurance: 5 Things You Need to Know', timing: '3 days', status: 'scheduled' },
+                            { subject: 'Special Veteran Benefits You Don\'t Want to Miss', timing: '7 days', status: 'draft' }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        name: 'Lead Nurture Series',
+                        status: 'active',
+                        subscribers: 892,
+                        openRate: 76.8,
+                        clickRate: 8.9,
+                        emails: [
+                            { subject: 'VA Life Insurance vs. Private Insurance: Which is Better?', timing: '2 weeks', status: 'sent' },
+                            { subject: 'No Medical Exam Life Insurance for Veterans', timing: '4 weeks', status: 'scheduled' },
+                            { subject: 'Protecting Your Family: Life Insurance for Military Families', timing: '6 weeks', status: 'draft' }
+                        ]
+                    }
+                ];
+            }
+
+            loadLeads() {
+                // Load lead data
+                this.leads = [
+                    {
+                        name: 'John Smith',
+                        email: 'john.smith@email.com',
+                        phone: '(555) 123-4567',
+                        campaign: 'Welcome Series',
+                        status: 'nurturing',
+                        lastContact: '2 days ago'
+                    },
+                    {
+                        name: 'Sarah Johnson',
+                        email: 'sarah.johnson@email.com',
+                        phone: '(555) 234-5678',
+                        campaign: 'Nurture Series',
+                        status: 'ready',
+                        lastContact: '1 day ago'
+                    }
+                ];
+            }
+
+            setupEventListeners() {
+                // Add event listeners for buttons
+                document.querySelectorAll('.btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        this.handleButtonClick(e.target);
+                    });
+                });
+            }
+
+            handleButtonClick(button) {
+                const action = button.textContent.toLowerCase();
+                
+                switch(action) {
+                    case 'edit campaign':
+                        this.editCampaign(button.closest('.campaign-card'));
+                        break;
+                    case 'view analytics':
+                        this.viewAnalytics(button.closest('.campaign-card'));
+                        break;
+                    case 'add email':
+                        this.addEmail(button.closest('.campaign-card'));
+                        break;
+                    case 'activate campaign':
+                        this.activateCampaign(button.closest('.campaign-card'));
+                        break;
+                    case 'view':
+                        this.viewLead(button.closest('tr'));
+                        break;
+                    case 'contact':
+                        this.contactLead(button.closest('tr'));
+                        break;
+                    case 'convert':
+                        this.convertLead(button.closest('tr'));
+                        break;
+                    case 'follow up':
+                        this.followUpLead(button.closest('tr'));
+                        break;
+                }
+            }
+
+            editCampaign(campaignCard) {
+                const campaignTitle = campaignCard.querySelector('.campaign-title').textContent;
+                alert(`Editing campaign: ${campaignTitle}\n\nThis would open the campaign editor with email templates, timing settings, and automation rules.`);
+            }
+
+            viewAnalytics(campaignCard) {
+                const campaignTitle = campaignCard.querySelector('.campaign-title').textContent;
+                alert(`Viewing analytics for: ${campaignTitle}\n\nThis would show detailed performance metrics including open rates, click rates, conversion rates, and revenue attribution.`);
+            }
+
+            addEmail(campaignCard) {
+                const campaignTitle = campaignCard.querySelector('.campaign-title').textContent;
+                alert(`Adding email to: ${campaignTitle}\n\nThis would open the email editor to create a new email in the sequence.`);
+            }
+
+            activateCampaign(campaignCard) {
+                const campaignTitle = campaignCard.querySelector('.campaign-title').textContent;
+                const statusElement = campaignCard.querySelector('.campaign-status');
+                
+                statusElement.textContent = 'Active';
+                statusElement.className = 'campaign-status status-active';
+                
+                alert(`Campaign activated: ${campaignTitle}\n\nThe campaign is now live and will start sending emails to subscribers.`);
+            }
+
+            viewLead(row) {
+                const name = row.cells[0].textContent;
+                const email = row.cells[1].textContent;
+                alert(`Viewing lead: ${name}\nEmail: ${email}\n\nThis would show the lead's complete profile, interaction history, and campaign progress.`);
+            }
+
+            contactLead(row) {
+                const name = row.cells[0].textContent;
+                const phone = row.cells[2].textContent;
+                alert(`Contacting lead: ${name}\nPhone: ${phone}\n\nThis would initiate a phone call or send a personalized message.`);
+            }
+
+            convertLead(row) {
+                const name = row.cells[0].textContent;
+                const statusElement = row.querySelector('.lead-status');
+                
+                statusElement.textContent = 'Converted';
+                statusElement.className = 'lead-status status-converted';
+                
+                alert(`Lead converted: ${name}\n\nThe lead has been marked as converted and moved to the customer database.`);
+            }
+
+            followUpLead(row) {
+                const name = row.cells[0].textContent;
+                alert(`Following up with: ${name}\n\nThis would schedule a follow-up call or send a personalized follow-up email.`);
+            }
+        }
+
+        // Initialize drip marketing system
+        let dripSystem;
+        document.addEventListener('DOMContentLoaded', () => {
+            dripSystem = new DripMarketingSystem();
+        });
+    </script>
+</body>
+</html> 

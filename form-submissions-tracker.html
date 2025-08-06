@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veteran Valor Form Submissions Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+
+        .stats-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            color: #1e40af;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #059669;
+        }
+
+        .submissions-table {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .submissions-table h3 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .export-btn {
+            background: #059669;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .export-btn:hover {
+            background: #047857;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-new {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-contacted {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-quoted {
+            background: #dcfce7;
+            color: #059669;
+        }
+
+        .status-converted {
+            background: #dcfce7;
+            color: #059669;
+        }
+
+        .filters {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .filters h3 {
+            color: #1e40af;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #374151;
+        }
+
+        .filter-group input, .filter-group select {
+            padding: 8px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .search-btn {
+            background: #1e40af;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            align-self: end;
+        }
+
+        .search-btn:hover {
+            background: #1e3a8a;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 768px) {
+            .stats-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            table {
+                font-size: 0.9rem;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Form Submissions Tracker</h1>
+            <p>Track all form submissions with names, phone numbers, and contact details</p>
+        </div>
+
+        <div class="stats-cards">
+            <div class="stat-card">
+                <h3>Total Submissions</h3>
+                <div class="stat-value" id="totalSubmissions">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Today's Submissions</h3>
+                <div class="stat-value" id="todaySubmissions">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>This Week</h3>
+                <div class="stat-value" id="weekSubmissions">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Conversion Rate</h3>
+                <div class="stat-value" id="conversionRate">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Avg Response Time</h3>
+                <div class="stat-value" id="avgResponseTime">-</div>
+            </div>
+            <div class="stat-card">
+                <h3>Pending Follow-up</h3>
+                <div class="stat-value" id="pendingFollowup">-</div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <h3>🔍 Filter Submissions</h3>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>Search by Name</label>
+                    <input type="text" id="nameFilter" placeholder="Enter name...">
+                </div>
+                <div class="filter-group">
+                    <label>Search by Phone</label>
+                    <input type="text" id="phoneFilter" placeholder="Enter phone...">
+                </div>
+                <div class="filter-group">
+                    <label>Status</label>
+                    <select id="statusFilter">
+                        <option value="">All Statuses</option>
+                        <option value="new">New</option>
+                        <option value="contacted">Contacted</option>
+                        <option value="quoted">Quoted</option>
+                        <option value="converted">Converted</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Date Range</label>
+                    <select id="dateFilter">
+                        <option value="all">All Time</option>
+                        <option value="today">Today</option>
+                        <option value="week">This Week</option>
+                        <option value="month">This Month</option>
+                    </select>
+                </div>
+                <button class="search-btn" onclick="filterSubmissions()">🔍 Search</button>
+            </div>
+        </div>
+
+        <div class="submissions-table">
+            <h3>
+                📋 All Form Submissions
+                <button class="export-btn" onclick="exportSubmissions()">📥 Export CSV</button>
+            </h3>
+            <div class="loading" id="loading">
+                Loading form submissions...
+            </div>
+            <table id="submissionsTable" style="display: none;">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>Age</th>
+                        <th>Coverage Type</th>
+                        <th>Coverage Amount</th>
+                        <th>Status</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="submissionsTableBody">
+                    <!-- Submissions will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Form Submissions Tracker
+        class FormSubmissionsTracker {
+            constructor() {
+                this.submissions = [];
+                this.filteredSubmissions = [];
+                this.init();
+            }
+
+            async init() {
+                await this.loadSubmissions();
+                this.updateStats();
+                this.displaySubmissions();
+                this.setupEventListeners();
+            }
+
+            async loadSubmissions() {
+                // Simulate loading form submissions data
+                this.submissions = this.generateSampleSubmissions();
+                this.filteredSubmissions = [...this.submissions];
+            }
+
+            generateSampleSubmissions() {
+                const names = [
+                    'John Smith', 'Sarah Johnson', 'Michael Davis', 'Emily Wilson', 'David Brown',
+                    'Lisa Anderson', 'Robert Taylor', 'Jennifer Martinez', 'Christopher Garcia',
+                    'Amanda Rodriguez', 'James Miller', 'Michelle White', 'Daniel Thompson',
+                    'Jessica Lee', 'Matthew Clark', 'Ashley Hall', 'Andrew Lewis', 'Nicole Young',
+                    'Joshua Allen', 'Stephanie King', 'Kevin Wright', 'Rachel Green',
+                    'Brian Scott', 'Amber Baker', 'Steven Adams', 'Megan Nelson',
+                    'Timothy Carter', 'Lauren Mitchell', 'Jason Perez', 'Heather Roberts'
+                ];
+
+                const phoneNumbers = [
+                    '(555) 123-4567', '(555) 234-5678', '(555) 345-6789', '(555) 456-7890',
+                    '(555) 567-8901', '(555) 678-9012', '(555) 789-0123', '(555) 890-1234',
+                    '(555) 901-2345', '(555) 012-3456', '(555) 111-2222', '(555) 222-3333',
+                    '(555) 333-4444', '(555) 444-5555', '(555) 555-6666', '(555) 666-7777',
+                    '(555) 777-8888', '(555) 888-9999', '(555) 999-0000', '(555) 000-1111',
+                    '(555) 111-3333', '(555) 222-4444', '(555) 333-5555', '(555) 444-6666',
+                    '(555) 555-7777', '(555) 666-8888', '(555) 777-9999', '(555) 888-0000',
+                    '(555) 999-1111', '(555) 000-2222'
+                ];
+
+                const emails = [
+                    'john.smith@email.com', 'sarah.johnson@email.com', 'michael.davis@email.com',
+                    'emily.wilson@email.com', 'david.brown@email.com', 'lisa.anderson@email.com',
+                    'robert.taylor@email.com', 'jennifer.martinez@email.com', 'christopher.garcia@email.com',
+                    'amanda.rodriguez@email.com', 'james.miller@email.com', 'michelle.white@email.com',
+                    'daniel.thompson@email.com', 'jessica.lee@email.com', 'matthew.clark@email.com',
+                    'ashley.hall@email.com', 'andrew.lewis@email.com', 'nicole.young@email.com',
+                    'joshua.allen@email.com', 'stephanie.king@email.com', 'kevin.wright@email.com',
+                    'rachel.green@email.com', 'brian.scott@email.com', 'amber.baker@email.com',
+                    'steven.adams@email.com', 'megan.nelson@email.com', 'timothy.carter@email.com',
+                    'lauren.mitchell@email.com', 'jason.perez@email.com', 'heather.roberts@email.com'
+                ];
+
+                const coverageTypes = ['Term Life', 'Whole Life', 'Universal Life', 'Final Expense'];
+                const coverageAmounts = ['$100,000', '$250,000', '$500,000', '$1,000,000', '$2,000,000'];
+                const statuses = ['new', 'contacted', 'quoted', 'converted'];
+
+                const submissions = [];
+
+                for (let i = 0; i < 50; i++) {
+                    const date = new Date();
+                    date.setDate(date.getDate() - Math.floor(Math.random() * 30));
+                    date.setHours(Math.floor(Math.random() * 24));
+                    date.setMinutes(Math.floor(Math.random() * 60));
+
+                    submissions.push({
+                        id: i + 1,
+                        date: date,
+                        name: names[i % names.length],
+                        phone: phoneNumbers[i % phoneNumbers.length],
+                        email: emails[i % emails.length],
+                        age: Math.floor(Math.random() * 40) + 25,
+                        coverageType: coverageTypes[Math.floor(Math.random() * coverageTypes.length)],
+                        coverageAmount: coverageAmounts[Math.floor(Math.random() * coverageAmounts.length)],
+                        status: statuses[Math.floor(Math.random() * statuses.length)],
+                        notes: this.getRandomNotes(),
+                        source: Math.random() > 0.5 ? 'Website Form' : 'Phone Call'
+                    });
+                }
+
+                return submissions.sort((a, b) => b.date - a.date);
+            }
+
+            getRandomNotes() {
+                const notes = [
+                    'Interested in term life insurance',
+                    'Looking for whole life coverage',
+                    'Has family to protect',
+                    'Military veteran - special rates available',
+                    'Wants to compare quotes',
+                    'Needs coverage for mortgage',
+                    'Interested in final expense insurance',
+                    'Has pre-existing conditions',
+                    'Looking for affordable coverage',
+                    'Wants to leave legacy for family'
+                ];
+                return notes[Math.floor(Math.random() * notes.length)];
+            }
+
+            updateStats() {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                
+                const todaySubmissions = this.submissions.filter(s => s.date >= today);
+                const weekAgo = new Date();
+                weekAgo.setDate(weekAgo.getDate() - 7);
+                const weekSubmissions = this.submissions.filter(s => s.date >= weekAgo);
+                const newSubmissions = this.submissions.filter(s => s.status === 'new');
+
+                document.getElementById('totalSubmissions').textContent = this.submissions.length;
+                document.getElementById('todaySubmissions').textContent = todaySubmissions.length;
+                document.getElementById('weekSubmissions').textContent = weekSubmissions.length;
+                document.getElementById('conversionRate').textContent = this.calculateConversionRate() + '%';
+                document.getElementById('avgResponseTime').textContent = this.calculateAvgResponseTime();
+                document.getElementById('pendingFollowup').textContent = newSubmissions.length;
+            }
+
+            calculateConversionRate() {
+                const converted = this.submissions.filter(s => s.status === 'converted').length;
+                return Math.round((converted / this.submissions.length) * 100);
+            }
+
+            calculateAvgResponseTime() {
+                const contacted = this.submissions.filter(s => s.status === 'contacted' || s.status === 'quoted' || s.status === 'converted');
+                if (contacted.length === 0) return '0h';
+                
+                const totalHours = contacted.reduce((sum, s) => {
+                    const responseTime = Math.floor(Math.random() * 48) + 1; // 1-48 hours
+                    return sum + responseTime;
+                }, 0);
+                
+                const avgHours = Math.round(totalHours / contacted.length);
+                return avgHours + 'h';
+            }
+
+            displaySubmissions() {
+                const tbody = document.getElementById('submissionsTableBody');
+                const loading = document.getElementById('loading');
+                const table = document.getElementById('submissionsTable');
+
+                loading.style.display = 'none';
+                table.style.display = 'table';
+
+                tbody.innerHTML = this.filteredSubmissions.map(submission => `
+                    <tr>
+                        <td>${this.formatDate(submission.date)}</td>
+                        <td>${submission.name}</td>
+                        <td>${submission.phone}</td>
+                        <td>${submission.email}</td>
+                        <td>${submission.age}</td>
+                        <td>${submission.coverageType}</td>
+                        <td>${submission.coverageAmount}</td>
+                        <td><span class="status-badge status-${submission.status}">${this.capitalizeFirst(submission.status)}</span></td>
+                        <td>${submission.notes}</td>
+                    </tr>
+                `).join('');
+            }
+
+            formatDate(date) {
+                return date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+
+            capitalizeFirst(str) {
+                return str.charAt(0).toUpperCase() + str.slice(1);
+            }
+
+            setupEventListeners() {
+                // Auto-refresh every 5 minutes
+                setInterval(() => {
+                    this.loadSubmissions();
+                    this.updateStats();
+                    this.displaySubmissions();
+                }, 300000);
+            }
+
+            filterSubmissions() {
+                const nameFilter = document.getElementById('nameFilter').value.toLowerCase();
+                const phoneFilter = document.getElementById('phoneFilter').value.toLowerCase();
+                const statusFilter = document.getElementById('statusFilter').value;
+                const dateFilter = document.getElementById('dateFilter').value;
+
+                this.filteredSubmissions = this.submissions.filter(submission => {
+                    const matchesName = !nameFilter || submission.name.toLowerCase().includes(nameFilter);
+                    const matchesPhone = !phoneFilter || submission.phone.includes(phoneFilter);
+                    const matchesStatus = !statusFilter || submission.status === statusFilter;
+                    const matchesDate = this.matchesDateFilter(submission.date, dateFilter);
+
+                    return matchesName && matchesPhone && matchesStatus && matchesDate;
+                });
+
+                this.displaySubmissions();
+            }
+
+            matchesDateFilter(submissionDate, filter) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                switch (filter) {
+                    case 'today':
+                        return submissionDate >= today;
+                    case 'week':
+                        const weekAgo = new Date();
+                        weekAgo.setDate(weekAgo.getDate() - 7);
+                        return submissionDate >= weekAgo;
+                    case 'month':
+                        const monthAgo = new Date();
+                        monthAgo.setMonth(monthAgo.getMonth() - 1);
+                        return submissionDate >= monthAgo;
+                    default:
+                        return true;
+                }
+            }
+
+            exportSubmissions() {
+                const headers = ['Date & Time', 'Name', 'Phone Number', 'Email', 'Age', 'Coverage Type', 'Coverage Amount', 'Status', 'Notes'];
+                const csvContent = [
+                    headers.join(','),
+                    ...this.filteredSubmissions.map(submission => [
+                        this.formatDate(submission.date),
+                        submission.name,
+                        submission.phone,
+                        submission.email,
+                        submission.age,
+                        submission.coverageType,
+                        submission.coverageAmount,
+                        submission.status,
+                        submission.notes
+                    ].join(','))
+                ].join('\n');
+
+                const blob = new Blob([csvContent], { type: 'text/csv' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `form-submissions-${new Date().toISOString().split('T')[0]}.csv`;
+                a.click();
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        // Initialize tracker
+        let tracker;
+        document.addEventListener('DOMContentLoaded', () => {
+            tracker = new FormSubmissionsTracker();
+        });
+
+        // Global functions
+        function filterSubmissions() {
+            tracker.filterSubmissions();
+        }
+
+        function exportSubmissions() {
+            tracker.exportSubmissions();
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Email Sender - Veteran Valor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #1e40af;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .email-form {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #1e40af;
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background: #1e40af;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-success {
+            background: #059669;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #047857;
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .status-success {
+            background: #dcfce7;
+            color: #059669;
+            border: 1px solid #bbf7d0;
+        }
+
+        .status-error {
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .status-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+        }
+
+        .email-preview {
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .email-header {
+            background: #f8fafc;
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .email-body {
+            padding: 30px;
+            background: white;
+        }
+
+        .template-selector {
+            margin-bottom: 20px;
+        }
+
+        .template-selector select {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #1e40af;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📧 Real Email Sender</h1>
+            <p>Send actual emails to connormorton.ffl@gmail.com</p>
+        </div>
+
+        <div class="content">
+            <div id="statusMessage" class="status status-info">
+                Ready to send real emails to connormorton.ffl@gmail.com
+            </div>
+
+            <div class="email-form">
+                <div class="template-selector">
+                    <label for="emailTemplate">Select Email Template:</label>
+                    <select id="emailTemplate">
+                        <option value="welcome">Welcome to Veteran Valor Life Insurance</option>
+                        <option value="quote">Your Free Life Insurance Quote is Ready</option>
+                        <option value="education">Veteran Life Insurance: 5 Things You Need to Know</option>
+                        <option value="offer">Special Veteran Life Insurance Offer</option>
+                        <option value="custom">Custom Email</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailSubject">Email Subject:</label>
+                    <input type="text" id="emailSubject" value="Welcome to Veteran Valor Life Insurance" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="emailContent">Email Content:</label>
+                    <textarea id="emailContent" rows="15" required>Dear Connor,
+
+Welcome to Veteran Valor Life Insurance! We're honored to serve those who have served our country.
+
+As a veteran, you have access to exclusive life insurance benefits and rates that aren't available to the general public. Our mission is to ensure you and your family have the protection you deserve.
+
+What's Next?
+✅ Your personalized quote is being prepared
+✅ You'll receive it within 24 hours
+✅ No medical exam required for most veterans
+✅ Special rates for service members and families
+
+Veteran Benefits You Qualify For:
+• Up to 40% lower rates than civilian insurance
+• Guaranteed acceptance for service-connected disabilities
+• No medical exam for coverage up to $500,000
+• Family coverage at discounted rates
+
+If you have any questions, don't hesitate to call us at 1-800-VET-INSURANCE.
+
+Thank you for your service,
+The Veteran Valor Team
+
+Veteran Valor Life Insurance
+1-800-VET-INSURANCE
+veteranvalorlifeinsurance.com</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="senderName">From Name:</label>
+                    <input type="text" id="senderName" value="Veteran Valor Life Insurance" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="senderEmail">From Email:</label>
+                    <input type="email" id="senderEmail" value="noreply@veteranvalorlifeinsurance.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="recipientEmail">To Email:</label>
+                    <input type="email" id="recipientEmail" value="connormorton.ffl@gmail.com" required>
+                </div>
+
+                <button class="btn btn-primary" onclick="sendRealEmail()">📧 Send Real Email</button>
+                <button class="btn btn-success" onclick="loadTemplate()">🔄 Load Template</button>
+                <button class="btn btn-secondary" onclick="previewEmail()">👁️ Preview</button>
+            </div>
+
+            <div class="loading" id="loadingDiv">
+                <div class="spinner"></div>
+                <p>Sending email to connormorton.ffl@gmail.com...</p>
+            </div>
+
+            <div class="email-preview" id="emailPreview" style="display: none;">
+                <div class="email-header">
+                    <div><strong>To:</strong> <span id="previewTo">connormorton.ffl@gmail.com</span></div>
+                    <div><strong>From:</strong> <span id="previewFrom">Veteran Valor Life Insurance</span></div>
+                    <div><strong>Subject:</strong> <span id="previewSubject">Welcome to Veteran Valor Life Insurance</span></div>
+                </div>
+                <div class="email-body" id="previewBody">
+                    <!-- Preview content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Email templates
+        const emailTemplates = {
+            'welcome': {
+                subject: 'Welcome to Veteran Valor Life Insurance',
+                content: `Dear Connor,
+
+Welcome to Veteran Valor Life Insurance! We're honored to serve those who have served our country.
+
+As a veteran, you have access to exclusive life insurance benefits and rates that aren't available to the general public. Our mission is to ensure you and your family have the protection you deserve.
+
+What's Next?
+✅ Your personalized quote is being prepared
+✅ You'll receive it within 24 hours
+✅ No medical exam required for most veterans
+✅ Special rates for service members and families
+
+Veteran Benefits You Qualify For:
+• Up to 40% lower rates than civilian insurance
+• Guaranteed acceptance for service-connected disabilities
+• No medical exam for coverage up to $500,000
+• Family coverage at discounted rates
+
+If you have any questions, don't hesitate to call us at 1-800-VET-INSURANCE.
+
+Thank you for your service,
+The Veteran Valor Team
+
+Veteran Valor Life Insurance
+1-800-VET-INSURANCE
+veteranvalorlifeinsurance.com`
+            },
+            'quote': {
+                subject: 'Your Free Life Insurance Quote is Ready',
+                content: `Dear Connor,
+
+Great news! Your personalized life insurance quote is ready. Based on your veteran status and preferences, here's what we found for you:
+
+Your Recommended Coverage:
+• Coverage Amount: $500,000
+• Monthly Premium: $45
+• Policy Type: Term Life
+• Veteran Discount: 25%
+
+This quote includes your exclusive veteran benefits and is valid for 30 days.
+
+Ready to get started? Call us at 1-800-VET-INSURANCE to speak with a veteran specialist.
+
+Best regards,
+The Veteran Valor Team
+
+Veteran Valor Life Insurance
+1-800-VET-INSURANCE
+veteranvalorlifeinsurance.com`
+            },
+            'education': {
+                subject: 'Veteran Life Insurance: 5 Things You Need to Know',
+                content: `Dear Connor,
+
+As a veteran, you have unique life insurance options that most people don't know about. Here are the 5 most important things you need to know:
+
+1. VA Life Insurance vs. Private Insurance
+While VA life insurance is available, private insurance often offers better rates and more flexibility. Many veterans can save 20-40% with private coverage.
+
+2. No Medical Exam Options
+Veterans with service-connected disabilities can often get guaranteed acceptance life insurance with no medical exam required.
+
+3. Family Coverage Benefits
+Your veteran status can qualify your entire family for discounted rates, including spouses and children.
+
+4. Portability After Service
+Private life insurance stays with you after leaving the military, unlike some military-specific coverage.
+
+5. Tax Benefits
+Life insurance death benefits are typically tax-free, providing maximum protection for your family.
+
+Ready to learn more? Call us at 1-800-VET-INSURANCE.
+
+Thank you for your service,
+The Veteran Valor Team
+
+Veteran Valor Life Insurance
+1-800-VET-INSURANCE
+veteranvalorlifeinsurance.com`
+            },
+            'offer': {
+                subject: 'Special Veteran Life Insurance Offer - 25% Off',
+                content: `Dear Connor,
+
+We have a special offer just for veterans like you!
+
+🎁 SPECIAL VETERAN OFFER:
+• 25% off your first year premium
+• No medical exam required
+• Guaranteed acceptance for veterans
+• Family coverage at discounted rates
+
+This offer expires in 7 days. Don't miss out on the protection your family deserves.
+
+Call us at 1-800-VET-INSURANCE to claim your special offer.
+
+Thank you for your service,
+The Veteran Valor Team
+
+Veteran Valor Life Insurance
+1-800-VET-INSURANCE
+veteranvalorlifeinsurance.com`
+            }
+        };
+
+        function loadTemplate() {
+            const templateId = document.getElementById('emailTemplate').value;
+            const template = emailTemplates[templateId];
+            
+            if (template) {
+                document.getElementById('emailSubject').value = template.subject;
+                document.getElementById('emailContent').value = template.content;
+                showStatus('Template loaded successfully!', 'success');
+            }
+        }
+
+        function previewEmail() {
+            const to = document.getElementById('recipientEmail').value;
+            const from = document.getElementById('senderName').value;
+            const subject = document.getElementById('emailSubject').value;
+            const content = document.getElementById('emailContent').value;
+
+            document.getElementById('previewTo').textContent = to;
+            document.getElementById('previewFrom').textContent = from;
+            document.getElementById('previewSubject').textContent = subject;
+            document.getElementById('previewBody').textContent = content;
+
+            document.getElementById('emailPreview').style.display = 'block';
+            showStatus('Email preview loaded!', 'success');
+        }
+
+        function sendRealEmail() {
+            const to = document.getElementById('recipientEmail').value;
+            const from = document.getElementById('senderName').value;
+            const subject = document.getElementById('emailSubject').value;
+            const content = document.getElementById('emailContent').value;
+            const senderEmail = document.getElementById('senderEmail').value;
+
+            if (!to || !subject || !content) {
+                showStatus('Please fill in all required fields!', 'error');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loadingDiv').style.display = 'block';
+            showStatus('Sending email...', 'info');
+
+            // Method 1: Using Formspree (if you have a form set up)
+            sendViaFormspree(to, from, subject, content, senderEmail);
+        }
+
+        function sendViaFormspree(to, from, subject, content, senderEmail) {
+            // Create form data for Formspree
+            const formData = new FormData();
+            formData.append('to', to);
+            formData.append('from', from);
+            formData.append('subject', subject);
+            formData.append('message', content);
+            formData.append('sender_email', senderEmail);
+
+            // Try to send via Formspree
+            fetch('https://formspree.io/f/mqalpban', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                document.getElementById('loadingDiv').style.display = 'none';
+                
+                if (response.ok) {
+                    showStatus('✅ Email sent successfully to connormorton.ffl@gmail.com!', 'success');
+                    console.log('Email sent via Formspree');
+                    
+                    // Log email details
+                    logEmailDetails(to, from, subject, content);
+                } else {
+                    throw new Error('Formspree failed');
+                }
+            })
+            .catch(error => {
+                document.getElementById('loadingDiv').style.display = 'none';
+                console.log('Formspree failed, trying alternative method...');
+                
+                // Fallback: Try using mailto with a hidden form
+                sendViaMailto(to, from, subject, content);
+            });
+        }
+
+        function sendViaMailto(to, from, subject, content) {
+            // Create a hidden form to trigger mailto
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'mailto:' + to;
+            form.style.display = 'none';
+
+            // Add form fields
+            const fields = {
+                'subject': subject,
+                'body': content
+            };
+
+            for (let key in fields) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key;
+                input.value = fields[key];
+                form.appendChild(input);
+            }
+
+            document.body.appendChild(form);
+            
+            try {
+                form.submit();
+                showStatus('✅ Email client opened for connormorton.ffl@gmail.com!', 'success');
+                console.log('Email client opened via mailto');
+                logEmailDetails(to, from, subject, content);
+            } catch (error) {
+                showStatus('❌ Failed to send email. Please check your email client settings.', 'error');
+                console.error('Mailto failed:', error);
+            } finally {
+                document.body.removeChild(form);
+            }
+        }
+
+        function logEmailDetails(to, from, subject, content) {
+            console.log('📧 Email Details:');
+            console.log('To:', to);
+            console.log('From:', from);
+            console.log('Subject:', subject);
+            console.log('Content:', content);
+            console.log('Timestamp:', new Date().toISOString());
+        }
+
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('statusMessage');
+            statusElement.textContent = message;
+            statusElement.className = `status status-${type}`;
+        }
+
+        // Load default template on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTemplate();
+            
+            // Add event listener for template selection
+            document.getElementById('emailTemplate').addEventListener('change', loadTemplate);
+        });
+    </script>
+</body>
+</html> 

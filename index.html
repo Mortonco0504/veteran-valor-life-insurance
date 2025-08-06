@@ -103,7 +103,7 @@
         gtag('js', new Date());
         gtag('config', 'AW-11492282990');
         
-        // Google Ads Conversion Tracking Functions
+        // Enhanced Analytics Tracking
         function trackGoogleAdsConversion(conversionId, conversionLabel, value = null) {
             gtag('event', 'conversion', {
                 'send_to': `AW-${conversionId}/${conversionLabel}`,
@@ -112,25 +112,107 @@
             });
         }
         
-        // Track form submissions
-        function trackFormSubmission() {
+        // Enhanced tracking functions with detailed analytics
+        function trackFormSubmission(formType = 'quote_request') {
             trackGoogleAdsConversion('CONVERSION_ID', 'FORM_SUBMISSION_LABEL', 1);
+            
+            // Enhanced analytics tracking
+            gtag('event', 'form_submit', {
+                'event_category': 'engagement',
+                'event_label': formType,
+                'form_type': 'life_insurance',
+                'user_type': 'veteran',
+                'timestamp': new Date().toISOString()
+            });
         }
         
-        // Track phone calls
-        function trackPhoneCall() {
+        function trackPhoneCall(phoneNumber = '1-800-VET-INSURANCE') {
             trackGoogleAdsConversion('CONVERSION_ID', 'PHONE_CALL_LABEL', 1);
+            
+            // Enhanced analytics tracking
+            gtag('event', 'phone_call', {
+                'event_category': 'engagement',
+                'event_label': phoneNumber,
+                'call_type': 'quote_request',
+                'user_type': 'veteran',
+                'timestamp': new Date().toISOString()
+            });
         }
         
-        // Track quote requests
-        function trackQuoteRequest() {
+        function trackQuoteRequest(requestType = 'life_insurance') {
             trackGoogleAdsConversion('CONVERSION_ID', 'QUOTE_REQUEST_LABEL', 1);
+            
+            // Enhanced analytics tracking
+            gtag('event', 'quote_request', {
+                'event_category': 'engagement',
+                'event_label': requestType,
+                'request_type': 'life_insurance',
+                'user_type': 'veteran',
+                'timestamp': new Date().toISOString()
+            });
         }
         
-        // Track appointment bookings
         function trackAppointmentBooking() {
             trackGoogleAdsConversion('CONVERSION_ID', 'APPOINTMENT_LABEL', 1);
+            
+            // Enhanced analytics tracking
+            gtag('event', 'appointment_booking', {
+                'event_category': 'engagement',
+                'event_label': 'life_insurance_consultation',
+                'booking_type': 'consultation',
+                'user_type': 'veteran',
+                'timestamp': new Date().toISOString()
+            });
         }
+        
+        // Track user engagement
+        function trackUserEngagement() {
+            let startTime = Date.now();
+            let maxScroll = 0;
+            let hasInteracted = false;
+            
+            // Track scroll depth
+            window.addEventListener('scroll', () => {
+                const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+                if (scrollPercent > maxScroll && scrollPercent % 25 === 0) {
+                    maxScroll = scrollPercent;
+                    gtag('event', 'scroll_depth', {
+                        'event_category': 'engagement',
+                        'event_label': scrollPercent + '%',
+                        'depth': scrollPercent
+                    });
+                }
+            });
+            
+            // Track user interaction
+            document.addEventListener('click', () => {
+                if (!hasInteracted) {
+                    hasInteracted = true;
+                    gtag('event', 'user_interaction', {
+                        'event_category': 'engagement',
+                        'event_label': 'first_click',
+                        'interaction_type': 'first_click'
+                    });
+                }
+            });
+            
+            // Track time on page
+            setInterval(() => {
+                const timeOnPage = Math.round((Date.now() - startTime) / 1000);
+                if (timeOnPage % 30 === 0) {
+                    gtag('event', 'time_on_page', {
+                        'event_category': 'engagement',
+                        'event_label': timeOnPage + 's',
+                        'seconds': timeOnPage
+                    });
+                }
+            }, 1000);
+        }
+        
+        // Initialize enhanced tracking
+        document.addEventListener('DOMContentLoaded', () => {
+            trackUserEngagement();
+        });
     </script>
     <script>
         // Comprehensive device detection and redirect
@@ -1127,6 +1209,7 @@
 
 
     <script src="script.js"></script>
+    <script src="form-tracking.js"></script>
     
     <!-- SEO Content (Hidden) -->
     <div style="display: none;">

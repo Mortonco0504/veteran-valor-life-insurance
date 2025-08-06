@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix Gmail Script - Veteran Valor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #1e40af;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .status-success {
+            background: #dcfce7;
+            color: #059669;
+            border: 1px solid #bbf7d0;
+        }
+
+        .status-error {
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .status-info {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+        }
+
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background 0.3s ease;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #1e40af;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3a8a;
+        }
+
+        .btn-success {
+            background: #059669;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #047857;
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .steps {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .steps h3 {
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+
+        .steps ol {
+            margin-left: 20px;
+        }
+
+        .steps li {
+            margin-bottom: 15px;
+        }
+
+        .test-section {
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .test-section h3 {
+            color: #1e40af;
+            margin-bottom: 15px;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f4f6;
+            border-top: 4px solid #1e40af;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔧 Fix Gmail Script</h1>
+            <p>Set up Google Apps Script to send real emails to connormorton.ffl@gmail.com</p>
+        </div>
+
+        <div class="content">
+            <div id="statusMessage" class="status status-info">
+                Your current script has an error. Let's fix it to send real emails.
+            </div>
+
+            <div class="steps">
+                <h3>📋 Step-by-Step Instructions</h3>
+                <ol>
+                    <li><strong>Go to Google Apps Script:</strong> <a href="https://script.google.com" target="_blank">https://script.google.com</a></li>
+                    <li><strong>Create a new project</strong> or open your existing project</li>
+                    <li><strong>Delete all existing code</strong> in the Code.gs file</li>
+                    <li><strong>Copy and paste this code:</strong></li>
+                </ol>
+            </div>
+
+            <div class="code-block">function doPost(e) {
+  try {
+    // Parse the incoming data
+    const data = JSON.parse(e.postData.contents);
+    const recipient = data.to;
+    const subject = data.subject;
+    const body = data.body;
+    
+    // Send the email
+    GmailApp.sendEmail(recipient, subject, body, {
+      name: 'Veteran Valor Life Insurance'
+    });
+    
+    // Return success response
+    return ContentService.createTextOutput(JSON.stringify({
+      success: true,
+      message: 'Email sent successfully!'
+    })).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    // Return error response
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      message: 'Failed to send email: ' + error.message
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function doGet(e) {
+  return ContentService.createTextOutput("Veteran Valor Email Service - Use POST to send emails");
+}
+
+function testEmail() {
+  // Test function to send a test email
+  try {
+    GmailApp.sendEmail('connormorton.ffl@gmail.com', 
+      'Test Email from Veteran Valor', 
+      'This is a test email from the Veteran Valor Life Insurance system.',
+      {name: 'Veteran Valor Life Insurance'}
+    );
+    return "Test email sent successfully!";
+  } catch (error) {
+    return "Error sending test email: " + error.message;
+  }
+}</div>
+
+            <div class="steps">
+                <ol start="5">
+                    <li><strong>Save the script</strong> (Ctrl+S or Cmd+S)</li>
+                    <li><strong>Deploy as web app:</strong>
+                        <ul>
+                            <li>Click "Deploy" → "New deployment"</li>
+                            <li>Select "Web app"</li>
+                            <li>Execute as: "Me" (your email)</li>
+                            <li>Who has access: "Anyone"</li>
+                            <li>Click "Deploy"</li>
+                        </ul>
+                    </li>
+                    <li><strong>Authorize the script</strong> when prompted</li>
+                    <li><strong>Copy the new web app URL</strong> and paste it below</li>
+                </ol>
+            </div>
+
+            <div class="test-section">
+                <h3>🧪 Test Your Script</h3>
+                <p>Enter your new Google Apps Script URL:</p>
+                <input type="text" id="scriptUrl" placeholder="https://script.google.com/macros/s/YOUR_NEW_URL/exec" style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #d1d5db; border-radius: 6px;">
+                <button class="btn btn-primary" onclick="testScript()">Test Script</button>
+                <button class="btn btn-success" onclick="sendTestEmail()">Send Test Email</button>
+            </div>
+
+            <div class="loading" id="loadingDiv">
+                <div class="spinner"></div>
+                <p>Testing script...</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <button class="btn btn-secondary" onclick="openScriptEditor()">📝 Open Script Editor</button>
+                <button class="btn btn-secondary" onclick="openGmail()">📧 Open Gmail</button>
+                <button class="btn btn-secondary" onclick="checkEmail()">📬 Check Email</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testScript() {
+            const scriptUrl = document.getElementById('scriptUrl').value;
+            
+            if (!scriptUrl) {
+                showStatus('Please enter your Google Apps Script URL first!', 'error');
+                return;
+            }
+
+            document.getElementById('loadingDiv').style.display = 'block';
+            showStatus('Testing script connection...', 'info');
+
+            // Test the script with a GET request
+            fetch(scriptUrl)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('loadingDiv').style.display = 'none';
+                if (data.includes('Veteran Valor Email Service')) {
+                    showStatus('✅ Script is working! Ready to send emails.', 'success');
+                } else {
+                    showStatus('❌ Script test failed. Check your setup.', 'error');
+                }
+            })
+            .catch(error => {
+                document.getElementById('loadingDiv').style.display = 'none';
+                showStatus('❌ Script connection failed. Check your URL.', 'error');
+                console.error('Script test error:', error);
+            });
+        }
+
+        function sendTestEmail() {
+            const scriptUrl = document.getElementById('scriptUrl').value;
+            
+            if (!scriptUrl) {
+                showStatus('Please enter your Google Apps Script URL first!', 'error');
+                return;
+            }
+
+            document.getElementById('loadingDiv').style.display = 'block';
+            showStatus('Sending test email to connormorton.ffl@gmail.com...', 'info');
+
+            const emailData = {
+                to: 'connormorton.ffl@gmail.com',
+                subject: 'Test Email from Veteran Valor Life Insurance',
+                body: `Dear Connor,
+
+This is a test email from the Veteran Valor Life Insurance system.
+
+If you're receiving this email, it means the Google Apps Script is working correctly!
+
+Welcome to Veteran Valor Life Insurance! We're honored to serve those who have served our country.
+
+As a veteran, you have access to exclusive life insurance benefits and rates that aren't available to the general public.
+
+What's Next?
+✅ Your personalized quote is being prepared
+✅ You'll receive it within 24 hours
+✅ No medical exam required for most veterans
+✅ Special rates for service members and families
+
+Veteran Benefits You Qualify For:
+• Up to 40% lower rates than civilian insurance
+• Guaranteed acceptance for service-connected disabilities
+• No medical exam for coverage up to $500,000
+• Family coverage at discounted rates
+
+If you have any questions, don't hesitate to call us at 1-800-VET-INSURANCE.
+
+Thank you for your service,
+The Veteran Valor Team
+
+Veteran Valor Life Insurance
+1-800-VET-INSURANCE
+veteranvalorlifeinsurance.com`
+            };
+
+            fetch(scriptUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(emailData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loadingDiv').style.display = 'none';
+                if (data.success) {
+                    showStatus('✅ Test email sent successfully to connormorton.ffl@gmail.com!', 'success');
+                } else {
+                    throw new Error(data.message);
+                }
+            })
+            .catch(error => {
+                document.getElementById('loadingDiv').style.display = 'none';
+                showStatus('❌ Failed to send email: ' + error.message, 'error');
+                console.error('Email send error:', error);
+            });
+        }
+
+        function openScriptEditor() {
+            window.open('https://script.google.com', '_blank');
+        }
+
+        function openGmail() {
+            window.open('https://mail.google.com', '_blank');
+        }
+
+        function checkEmail() {
+            showStatus('📬 Opening Gmail to check for the test email...', 'info');
+            window.open('https://mail.google.com/mail/u/0/#inbox', '_blank');
+        }
+
+        function showStatus(message, type) {
+            const statusElement = document.getElementById('statusMessage');
+            statusElement.textContent = message;
+            statusElement.className = `status status-${type}`;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showStatus('Follow the steps above to fix your Google Apps Script', 'info');
+        });
+    </script>
+</body>
+</html> 
